@@ -33,10 +33,10 @@ WhiteSpace = [\ \t\f]
 CommentStart = "(*"
 CommentEnd = "*)"
 
-Identifier = [a-zA-Z\$] [a-zA-Z0-9\$]*
-IdInContext = (`?){Identifier}(`{Identifier})*(`?)
-
+Identifier = [[:letter:]\$] [[:letter:][:digit:]\$]*
 NamedCharacter = "\\["{Identifier}"]"
+Symbol = ({Identifier} | {NamedCharacter})+
+SymbolInContext = (`?){Symbol}(`{Symbol})*
 
 Digits = [0-9]+
 Digits2 = [0-9a-zA-Z]+
@@ -70,8 +70,7 @@ Out = "%"+
 	{LineTerminator}+   { return MathematicaElementTypes.LINE_BREAK; }
 	\"				 	{ yypushstate(IN_STRING); return MathematicaElementTypes.STRING_LITERAL_BEGIN; }
 
-	{IdInContext} 		{ return MathematicaElementTypes.IDENTIFIER; }
-	{NamedCharacter}    { return MathematicaElementTypes.IDENTIFIER; }
+	{SymbolInContext} 		{ return MathematicaElementTypes.IDENTIFIER; }
 
 	{BaseScientificNumber}|
 	{BasePrecisionNumber}|
@@ -201,11 +200,13 @@ Out = "%"+
 
 <PUT_RHS> {
   [^\"\#\%\'\(\)\+\;\,<=>@\[\]\^\{\}\|\n\r\ \t\f]+ { yybegin(YYINITIAL); return MathematicaElementTypes.STRINGIFIED_IDENTIFIER;}
+   \"				 									                     { yybegin(YYINITIAL); yypushstate(IN_STRING); return MathematicaElementTypes.STRING_LITERAL_BEGIN; }
   .                                                { return MathematicaElementTypes.BAD_CHARACTER; }
 }
 
 <GET_RHS> {
   [^\"\#\%\'\(\)\+\;\,<=>@\[\]\^\{\}\|\n\r\ \t\f]+ { yybegin(YYINITIAL); return MathematicaElementTypes.STRINGIFIED_IDENTIFIER;}
+  \"				 									                     { yybegin(YYINITIAL); yypushstate(IN_STRING); return MathematicaElementTypes.STRING_LITERAL_BEGIN; }
   .                                                { return MathematicaElementTypes.BAD_CHARACTER; }
 }
 

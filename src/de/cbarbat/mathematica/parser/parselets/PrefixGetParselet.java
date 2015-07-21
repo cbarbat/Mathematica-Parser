@@ -24,7 +24,6 @@ package de.cbarbat.mathematica.parser.parselets;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
-import de.cbarbat.mathematica.parser.ParseletProvider;
 import de.cbarbat.mathematica.parser.MathematicaElementTypes;
 
 /**
@@ -41,17 +40,15 @@ public class PrefixGetParselet implements PrefixParselet {
 
   @Override
   public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    MathematicaElementType nodeToken = MathematicaElementTypes.GET_PREFIX;
+    MathematicaElementType type = MathematicaElementTypes.GET_PREFIX;
     parser.advanceLexer();
-    boolean result;
-    if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER)) {
-      final PrefixParselet prefixParselet = ParseletProvider.getPrefixParselet(MathematicaElementTypes.STRINGIFIED_IDENTIFIER);
-      result = prefixParselet.parse(parser).isParsed();
+    if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER) || parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_BEGIN)) {
+      final MathematicaParser.Result result1 = parser.parseExpression(myPrecedence);
+      return MathematicaParser.result(type, result1.isParsed());
     } else {
       parser.error("File- or package-path, or string expected");
-      result = false;
+      return MathematicaParser.result(type, false);
     }
-    return MathematicaParser.result(nodeToken, result);
   }
 
   public int getPrecedence() {

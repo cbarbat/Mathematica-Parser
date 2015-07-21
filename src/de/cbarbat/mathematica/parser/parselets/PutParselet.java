@@ -43,7 +43,7 @@ public class PutParselet implements InfixParselet {
     final MathematicaElementType tokenType = parser.getTokenType();
     final MathematicaElementType type = tokenType.equals(MathematicaElementTypes.PUT) ? MathematicaElementTypes.PUT_EXPRESSION : MathematicaElementTypes.PUT_APPEND_EXPRESSION;
     parser.advanceLexer();
-    if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER)) {
+    if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER) || parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_BEGIN)) {
       final MathematicaParser.Result result1 = parser.parseExpression(myPrecedence);
       return MathematicaParser.result(type, result1.isParsed());
     } else {
