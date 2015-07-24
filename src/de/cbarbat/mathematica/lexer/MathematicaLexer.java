@@ -115,7 +115,14 @@ public class MathematicaLexer {
     }
     return cur < tokens.size() ? tokens.get(cur).type : null;
   }
-  
+
+  public Token getToken() {
+    if (!eof())
+      return tokens.get(index);
+    else
+      return null;
+  }
+
   public MathematicaElementType getTokenType() {
     if (!eof())
       return tokens.get(index).type;

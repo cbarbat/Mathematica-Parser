@@ -93,7 +93,7 @@ public class MathematicaParser {
           error("The last expression could not be parsed correctly.");
           myLexer.advanceLexer();
         } else {
-          System.out.println("Result: " + expr.getToken().myType);
+          //System.out.println("Result: " + expr.getToken().myType);
         }
       }
     } catch (CriticalParserError criticalParserError) {
@@ -115,7 +115,7 @@ public class MathematicaParser {
       throw new CriticalParserError("Maximal recursion depth exceeded during parsing.");
     }
 
-    MathematicaElementType token = myLexer.getTokenType();
+    MathematicaElementType token = getTokenType();
     if (token == null) {
       return notParsed();
     }
@@ -129,7 +129,7 @@ public class MathematicaParser {
     Result left = prefix.parse(this);
 
     while (left.isParsed()) {
-      token = myLexer.getTokenType();
+      token = getTokenType();
       InfixParselet infix = getInfixOrMultiplyParselet(token);
       if (infix == null) {
         break;
@@ -153,7 +153,7 @@ public class MathematicaParser {
       return null;
     }
 
-    if (myImportantLinebreakHandler.hadLineBreak()) {
+    if (myImportantLinebreakHandler.hadLineBreak() && myRecursionDepth == 1) {
       return null;
     }
 
@@ -169,7 +169,10 @@ public class MathematicaParser {
   }
 
   public MathematicaElementType getTokenType() {
-    return myLexer.getTokenType();
+    if (!myLexer.eof())
+      return myLexer.getToken().type;
+    else
+      return null;
   }
 
   public void advanceLexer() throws CriticalParserError {
@@ -181,7 +184,7 @@ public class MathematicaParser {
   }
 
   public boolean matchesToken(MathematicaElementType token) {
-    final MathematicaElementType testToken = myLexer.getTokenType();
+    final MathematicaElementType testToken = myLexer.lookAhead(0);
     return (testToken != null && testToken.equals(token));
   }
 
@@ -192,8 +195,6 @@ public class MathematicaParser {
   }
 
   /**
-   * Wrapper for {@link PsiBuilder#error(String)}
-   *
    * @param s
    *     Error message
    */
@@ -224,6 +225,10 @@ public class MathematicaParser {
     private Result(MathematicaElementType leftToken, boolean parsed) {
       this.myLeftToken = leftToken;
       this.myParsed = parsed;
+      if (leftToken != null)
+        System.out.println("Result: " + this.myLeftToken.myType + " parsed: " + this.myParsed);
+      else
+        System.out.println("Result: null" + " parsed: " + this.myParsed);
     }
 
     public MathematicaElementType getToken() {
@@ -242,7 +247,9 @@ public class MathematicaParser {
     }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public boolean isValid() { return (myLeftToken != null); }
+    public boolean isValid() {
+      return (myLeftToken != null);
+    }
   }
 
   /**
@@ -253,7 +260,8 @@ public class MathematicaParser {
     private boolean myLineBreakSeen = false;
 
     public void onSkip(MathematicaElementType type) {
-      if (type.equals(LINE_BREAK)) myLineBreakSeen = true;
+      if (type.equals(LINE_BREAK))
+        myLineBreakSeen = true;
     }
 
     public void reset() {
