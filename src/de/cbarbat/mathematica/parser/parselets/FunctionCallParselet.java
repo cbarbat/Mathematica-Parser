@@ -46,11 +46,18 @@ public class FunctionCallParselet implements InfixParselet {
       return MathematicaParser.notParsed();
     }
 
-    // parse the start. Either a Part expression like list[[ or a function call f[
+    // parse the start. Could be one of the following:
+    //   1. a Part expression like list[[
+    //   2. a function call f[
+    //   3. a slot expression like #[ which could be a function call or an Association lookup
     boolean isPartExpr = false;
+    boolean isAssociationSlot = false;
     if (parser.matchesToken(MathematicaElementTypes.LEFT_BRACKET, MathematicaElementTypes.LEFT_BRACKET)) {
       isPartExpr = true;
       parser.advanceLexer();
+      parser.advanceLexer();
+    } else if (left.getToken().equals(MathematicaElementTypes.SLOT)) {
+      isAssociationSlot = true;
       parser.advanceLexer();
     } else {
       parser.advanceLexer();
@@ -77,6 +84,10 @@ public class FunctionCallParselet implements InfixParselet {
         parser.error("Closing ']]' expected");
 
         return MathematicaParser.result(MathematicaElementTypes.PART_EXPRESSION, false);
+      } else if (isAssociationSlot) {
+        parser.advanceLexer();
+        
+        return MathematicaParser.result(MathematicaElementTypes.SLOT_EXPRESSION, true);
       } else {
         parser.advanceLexer();
 

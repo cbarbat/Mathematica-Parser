@@ -57,13 +57,13 @@ public interface MathematicaElementTypes {
       WHITE_SPACE, LINE_BREAK, COMMENT_CONTENT, COMMENT_END, COMMENT_START, COMMENT_SECTION, COMMENT_ANNOTATION
   );
   MathematicaElementType STRING_LITERAL = new MathematicaElementType("STRING_LITERAL");
+  MathematicaElementType STRING_NAMED_CHARACTER = new MathematicaElementType("STRING_NAMED_CHARACTER");
   MathematicaElementType STRING_LITERAL_BEGIN = new MathematicaElementType("STRING_LITERAL_BEGIN");
   MathematicaElementType STRING_LITERAL_END = new MathematicaElementType("STRING_LITERAL_END");
   List<MathematicaElementType> STRING_LITERALS = Arrays.asList(
-      STRING_LITERAL, STRING_LITERAL_END, STRING_LITERAL_BEGIN
+      STRING_LITERAL, STRING_LITERAL_END, STRING_LITERAL_BEGIN, STRING_NAMED_CHARACTER
   );
   MathematicaElementType IDENTIFIER = new MathematicaElementType("IDENTIFIER");
-  MathematicaElementType ASSOCIATION_SLOT = new MathematicaElementType("ASSOCIATION_SLOT");
   MathematicaElementType STRINGIFIED_IDENTIFIER = new MathematicaElementType("STRINGIFIED_IDENTIFIER");
   MathematicaElementType NUMBER = new MathematicaElementType("NUMBER");
   List<MathematicaElementType> LITERALS = Arrays.asList(
@@ -112,6 +112,7 @@ public interface MathematicaElementTypes {
   MathematicaElementType UNEQUAL = new MathematicaElementType("UNEQUAL");
   MathematicaElementType LESS_EQUAL = new MathematicaElementType("LESS_EQUAL");
   MathematicaElementType GREATER_EQUAL = new MathematicaElementType("GREATER_EQUAL");
+  MathematicaElementType UNDIRECTED_EDGE = new MathematicaElementType("UNDIRECTED_EDGE");
   MathematicaElementType LESS = new MathematicaElementType("LESS");
   MathematicaElementType GREATER = new MathematicaElementType("GREATER");
   MathematicaElementType SET = new MathematicaElementType("SET");
@@ -148,9 +149,8 @@ public interface MathematicaElementTypes {
   MathematicaElementType QUESTION_MARK = new MathematicaElementType("QUESTION_MARK");
   MathematicaElementType SLOT = new MathematicaElementType("SLOT");
   MathematicaElementType SLOT_SEQUENCE = new MathematicaElementType("SLOT_SEQUENCE");
-  List<MathematicaElementType> SLOTS = Arrays.asList(
-      SLOT, SLOT_SEQUENCE, ASSOCIATION_SLOT
-  );
+  MathematicaElementType ASSOCIATION_SLOT = new MathematicaElementType("ASSOCIATION_SLOT");
+  List<MathematicaElementType> SLOTS = Arrays.asList(SLOT, SLOT_SEQUENCE);
   MathematicaElementType FUNCTION = new MathematicaElementType("FUNCTION");
   MathematicaElementType BACK_TICK = new MathematicaElementType("BACK_TICK");
   MathematicaElementType INFIX_CALL = new MathematicaElementType("INFIX_CALL");
@@ -178,12 +178,33 @@ public interface MathematicaElementTypes {
       TAG_SET, TIMES, TIMES_BY,
       UNEQUAL, UNSAME_Q, UNSET, UP_SET, UP_SET_DELAYED, PREFIX_CALL, STRING_JOIN, STRING_LITERAL_EXPRESSION
   );
+
+  List<MathematicaElementType> INDENTABLE_OPERATORS = Arrays.asList(
+      ADD_TO, ALTERNATIVE, AND, APPLY, APPLY1,
+      COLON, CONDITION,
+      DECREMENT, DIVIDE, DIVIDE_BY, EQUAL,
+      GET, GREATER, GREATER_EQUAL,
+      INCREMENT, INFIX_CALL,
+      LESS, LESS_EQUAL,
+      MAP, MINUS,
+      NON_COMMUTATIVE_MULTIPLY,
+      DEFAULT, OR,
+      PLUS, POSTFIX, PREFIX, PUT, PUT_APPEND,
+      QUESTION_MARK,
+      REPLACE_ALL, REPLACE_REPEATED, RULE, RULE_DELAYED,
+      SAME_Q, SET, SET_DELAYED,
+      TAG_SET, TIMES, TIMES_BY,
+      UNEQUAL, UNSAME_Q, UNSET, UP_SET, UP_SET_DELAYED, PREFIX_CALL, STRING_JOIN
+  );
+
+
   MathematicaElementType GROUP_EXPRESSION = new MathematicaElementType("GROUP_EXPRESSION");
 
 
   // THIS SECTION IS AUTOMATICALLY CREATED WITH MATHEMATICA
   MathematicaElementType LIST_EXPRESSION = new MathematicaElementType("LIST_EXPRESSION");
   MathematicaElementType ASSOCIATION_EXPRESSION = new MathematicaElementType("ASSOCIATION_EXPRESSION");
+  MathematicaElementType SLOT_EXPRESSION = new MathematicaElementType("SLOT_EXPRESSION");
   MathematicaElementType NUMBER_EXPRESSION = new MathematicaElementType("NUMBER_EXPRESSION");
   MathematicaElementType SYMBOL_EXPRESSION = new MathematicaElementType("SYMBOL_EXPRESSION");
   MathematicaElementType STRINGIFIED_SYMBOL_EXPRESSION = new MathematicaElementType("STRINGIFIED_SYMBOL_EXPRESSION");
@@ -261,6 +282,7 @@ public interface MathematicaElementTypes {
   MathematicaElementType PUT_EXPRESSION = new MathematicaElementType("PUT_EXPRESSION");
   MathematicaElementType PUT_APPEND_EXPRESSION = new MathematicaElementType("PUT_APPEND_EXPRESSION");
   MathematicaElementType COMPOUND_EXPRESSION_EXPRESSION = new MathematicaElementType("COMPOUND_EXPRESSION_EXPRESSION");
+  MathematicaElementType UNDIRECTED_EDGE_EXPRESSION = new MathematicaElementType("UNDIRECTED_EDGE_EXPRESSION");
   MathematicaElementType FAILBACK = new MathematicaElementType("FAILBACK");
-  
+
 }

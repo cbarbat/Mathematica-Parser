@@ -175,6 +175,13 @@ public class MathematicaParser {
       return null;
   }
 
+  public MathematicaLexer.Token getToken() {
+    if (!myLexer.eof())
+      return myLexer.getToken();
+    else
+      return null;
+  }
+
   public void advanceLexer() throws CriticalParserError {
     if (myLexer.eof()) {
       throw new CriticalParserError("Unexpected end of input.");

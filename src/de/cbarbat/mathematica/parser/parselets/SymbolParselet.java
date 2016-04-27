@@ -21,6 +21,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
@@ -45,10 +46,11 @@ public class SymbolParselet implements PrefixParselet {
   @Override
   public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
     MathematicaElementType finalExpressionType;
-    final MathematicaElementType tokenType = parser.getTokenType();
-    if (tokenType.equals(IDENTIFIER)) {
+    final MathematicaLexer.Token token = parser.getToken();
+    System.out.println("Symbol: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
+    if (token.type.equals(IDENTIFIER)) {
       finalExpressionType = SYMBOL_EXPRESSION;
-    } else if (tokenType.equals(STRINGIFIED_IDENTIFIER)) {
+    } else if (token.type.equals(STRINGIFIED_IDENTIFIER)) {
       finalExpressionType = STRINGIFIED_SYMBOL_EXPRESSION;
     } else {
       return MathematicaParser.notParsed();

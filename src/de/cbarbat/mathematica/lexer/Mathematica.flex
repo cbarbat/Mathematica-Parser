@@ -25,6 +25,7 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
   	final int state = states.removeFirst();
     yybegin(state);
   }
+
 %}
 
 LineTerminator = \n | \r | \r\n
@@ -34,7 +35,7 @@ CommentStart = "(*"
 CommentEnd = "*)"
 
 Identifier = [[:letter:]\$] [[:letter:][:digit:]\$]*
-NamedCharacter = "\\["{Identifier}"]"
+NamedCharacter = "\\["{Identifier}?"]"
 Symbol = ({Identifier} | {NamedCharacter})+
 SymbolInContext = (`?){Symbol}(`{Symbol})*
 
@@ -50,7 +51,7 @@ ScientificNumber = {PrecisionNumber} "\*^"(-?){Digits}
 BaseScientificNumber = {BasePrecisionNumber} "\*^"(-?){Digits}
 
 Slot = "#" [0-9]*
-AssociationSlot = "#" [a-zA-Z\$][a-zA-Z0-9\$]*
+AssociationSlot = "#" {Identifier} | "#\"" {Identifier} "\"" | "#\\[" {Identifier} "\\]"
 SlotSequence = "##" [0-9]*
 
 Out = "%"+
@@ -122,6 +123,7 @@ Out = "%"+
 	"!="				{ return MathematicaElementTypes.UNEQUAL; }
 	"<="				{ return MathematicaElementTypes.LESS_EQUAL; }
 	">="				{ return MathematicaElementTypes.GREATER_EQUAL; }
+	"<->"				{ return MathematicaElementTypes.UNDIRECTED_EDGE; }
 	"<"					{ return MathematicaElementTypes.LESS; }
 	">"					{ return MathematicaElementTypes.GREATER; }
 	"+="				{ return MathematicaElementTypes.ADD_TO; }
@@ -140,13 +142,13 @@ Out = "%"+
 
 
 
-    "<>"				{ return MathematicaElementTypes.STRING_JOIN; }
-    "~~"				{ return MathematicaElementTypes.STRING_EXPRESSION; }
-    "~"					{ return MathematicaElementTypes.INFIX_CALL; }
+  "<>"				{ return MathematicaElementTypes.STRING_JOIN; }
+  "~~"				{ return MathematicaElementTypes.STRING_EXPRESSION; }
+	"~"					{ return MathematicaElementTypes.INFIX_CALL; }
 
-    "`"					{ return MathematicaElementTypes.BACK_TICK; }
+	"`"					{ return MathematicaElementTypes.BACK_TICK; }
 
-    ","					{ return MathematicaElementTypes.COMMA; }
+	","					{ return MathematicaElementTypes.COMMA; }
 	"..."				{ return MathematicaElementTypes.REPEATED_NULL; }
 // The next two lines need explanation: The problem is that .3 is short for 0.3 in Mathematica. Now, x=.3 should
 // be parsed as x = 0.3 and not as x=. 3
@@ -213,6 +215,7 @@ Out = "%"+
 <IN_STRING> {
   \"                             { yypopstate(); return MathematicaElementTypes.STRING_LITERAL_END; }
   [^\"\\]+                       { return MathematicaElementTypes.STRING_LITERAL; }
+  {NamedCharacter}               { return MathematicaElementTypes.STRING_NAMED_CHARACTER; }
   "\\"{LineTerminator}           { return MathematicaElementTypes.STRING_LITERAL; }
   "\\\\"                         { return MathematicaElementTypes.STRING_LITERAL; }
   "\\\""                         { return MathematicaElementTypes.STRING_LITERAL; }

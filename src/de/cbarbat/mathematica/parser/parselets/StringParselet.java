@@ -21,6 +21,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 import de.cbarbat.mathematica.parser.MathematicaElementTypes;
@@ -47,11 +48,17 @@ public class StringParselet implements PrefixParselet {
   @Override
   public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
     boolean parsedQ = true;
+    MathematicaLexer.Token token = parser.getToken();
+    System.out.println("String: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
     parser.advanceLexer();
-    while (parser.matchesToken(MathematicaElementTypes.STRING_LITERAL)) {
+    while (parser.matchesToken(MathematicaElementTypes.STRING_LITERAL) || parser.matchesToken(MathematicaElementTypes.STRING_NAMED_CHARACTER)) {
+      token = parser.getToken();
+      System.out.println("String: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
       parser.advanceLexer();
     }
     if (parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_END)) {
+      token = parser.getToken();
+      System.out.println("String: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
       parser.advanceLexer();
     } else {
       parser.error("'\"' expected");

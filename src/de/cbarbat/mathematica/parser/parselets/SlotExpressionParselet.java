@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Calin Barbat
+ * Copyright (c) 2015 Patrick Scheibe
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,34 +21,38 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
-import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
+import de.cbarbat.mathematica.parser.MathematicaElementTypes;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
 /**
- * Parselet for numbers. Does not need to do anything, because all kind of numbers are recognized by the lexer and this
- * parselet needs only to advance over the lexer token.
- *
- * @author patrick & calin (7/11/15)
+ * Parselet for Association style slots
+ * Created by rsmenon on 11/8/15.
  */
-public class NumberParselet implements PrefixParselet {
+public class SlotExpressionParselet implements PrefixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public NumberParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
+    public SlotExpressionParselet(int precedence) {
+        this.myPrecedence = precedence;
+    }
 
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    MathematicaLexer.Token token = parser.getToken();
-    System.out.println("Number: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
-    parser.advanceLexer();
-    return MathematicaParser.result(token.type, true);
-  }
+    @Override
+    public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
+        
+        final MathematicaElementType tokenType = parser.getTokenType();
+        if (tokenType.equals(MathematicaElementTypes.ASSOCIATION_SLOT)) {
+            parser.advanceLexer();
+            
+            return MathematicaParser.result(tokenType, true);
+        } else {
+            return MathematicaParser.notParsed();
+        }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    }
+
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }
