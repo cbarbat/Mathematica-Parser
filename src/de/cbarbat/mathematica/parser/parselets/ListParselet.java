@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -22,7 +23,10 @@
 package de.cbarbat.mathematica.parser.parselets;
 
 import de.cbarbat.mathematica.parser.CriticalParserError;
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaParser;
+
+import java.util.ArrayList;
 
 import static de.cbarbat.mathematica.parser.MathematicaElementTypes.*;
 
@@ -33,34 +37,40 @@ import static de.cbarbat.mathematica.parser.MathematicaElementTypes.*;
  */
 public class ListParselet implements PrefixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public ListParselet(int precedence) {
-    myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    boolean result = true;
-
-    if (parser.matchesToken(LEFT_BRACE)) {
-      parser.advanceLexer();
-    } else {
-      throw new CriticalParserError("List parselet does not start with '{'");
+    public ListParselet(int precedence) {
+        myPrecedence = precedence;
     }
 
-    MathematicaParser.Result seqResult = ParserUtil.parseSequence(parser, RIGHT_BRACE);
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        boolean parsed = true;
+        MathematicaLexer.Token token = parser.getToken();
 
-    if (parser.matchesToken(RIGHT_BRACE)) {
-      parser.advanceLexer();
-    } else {
-      parser.error("Closing '}' expected");
-      result = false;
+        if (parser.matchesToken(LEFT_BRACE)) {
+            parser.myBraceDepth++;
+            parser.advanceLexer();
+        } else {
+            throw new CriticalParserError("List parselet does not start with '{'");
+        }
+
+        ArrayList<MathematicaParser.AST> seqResult = ParserUtil.parseSequence(parser, RIGHT_BRACE);
+
+        if (parser.matchesToken(RIGHT_BRACE)) {
+            parser.myBraceDepth--;
+            parser.advanceLexer();
+        } else {
+            parser.error("Closing '}' expected");
+            parsed = false;
+        }
+
+        MathematicaParser.AST tree = MathematicaParser.result(token, LIST_EXPRESSION, parsed && seqResult != null);
+        tree.children = seqResult;
+        return tree;
     }
-    return MathematicaParser.result(LIST_EXPRESSION, result && seqResult.isParsed());
-  }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

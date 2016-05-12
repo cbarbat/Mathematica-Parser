@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -32,42 +33,42 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
  * @author patrick (3/27/13)
  */
 public class StringParselet implements PrefixParselet {
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public StringParselet(int precedence) {
-    myPrecedence = precedence;
-  }
-
-  /**
-   * Tries to parse a string consisting of beginning ", string content and final ".
-   *
-   * @param parser
-   *     The main parser object.
-   * @return Information about the success of the parsing.
-   */
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    boolean parsedQ = true;
-    MathematicaLexer.Token token = parser.getToken();
-    System.out.println("String: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
-    parser.advanceLexer();
-    while (parser.matchesToken(MathematicaElementTypes.STRING_LITERAL) || parser.matchesToken(MathematicaElementTypes.STRING_NAMED_CHARACTER)) {
-      token = parser.getToken();
-      System.out.println("String: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
-      parser.advanceLexer();
+    public StringParselet(int precedence) {
+        myPrecedence = precedence;
     }
-    if (parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_END)) {
-      token = parser.getToken();
-      System.out.println("String: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
-      parser.advanceLexer();
-    } else {
-      parser.error("'\"' expected");
-      parsedQ = false;
-    }
-    return MathematicaParser.result(MathematicaElementTypes.STRING_LITERAL_EXPRESSION, parsedQ);
-  }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    /**
+     * Tries to parse a string consisting of beginning ", string content and final ".
+     *
+     * @param parser The main parser object.
+     * @return Information about the success of the parsing.
+     */
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        boolean parsedQ = true;
+        MathematicaLexer.Token token = parser.getToken(); // opening " character
+        parser.advanceLexer();
+        while (parser.matchesToken(MathematicaElementTypes.STRING_LITERAL) || parser.matchesToken(MathematicaElementTypes.STRING_NAMED_CHARACTER)) {
+            token.type = parser.getToken().type;
+            token.text += parser.getToken().text;
+            token.end = parser.getToken().end;
+            parser.advanceLexer();
+        }
+        if (parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_END)) {
+            token.type = parser.getToken().type;
+            token.text += parser.getToken().text;
+            token.end = parser.getToken().end;
+            parser.advanceLexer();
+        } else {
+            parser.error("'\"' expected");
+            parsedQ = false;
+        }
+        return MathematicaParser.result(token, MathematicaElementTypes.STRING_LITERAL_EXPRESSION, parsedQ);
+    }
+
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -34,48 +35,49 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
  */
 public class GroupParselet implements PrefixParselet {
 
-  final int myPrecedence;
+    final int myPrecedence;
 
-  public GroupParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    // should never happen
-    if (!parser.getTokenType().equals(MathematicaElementTypes.LEFT_PAR)) {
-      return MathematicaParser.notParsed();
-    }
-    MathematicaElementType token = ParseletProvider.getPrefixElement(this);
-    parser.advanceLexer();
-
-    if (parser.eof()) {
-      parser.error("More input expected");
-      return MathematicaParser.notParsed();
+    public GroupParselet(int precedence) {
+        this.myPrecedence = precedence;
     }
 
-    MathematicaParser.Result result = parser.parseExpression();
-    if (parser.matchesToken(MathematicaElementTypes.RIGHT_PAR)) {
-      parser.advanceLexer();
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        // should never happen
+        if (!parser.getToken().type.equals(MathematicaElementTypes.LEFT_PAR)) {
+            return MathematicaParser.notParsed();
+        }
+        parser.myParDepth++;
+        parser.advanceLexer();
 
-      // if we find a closing ) we return the group as parsed successful, no matter whether
-      // the containing expression was parsed. Errors in the expression are marked there anyway.
-      result = MathematicaParser.result(token, true);
-    } else {
-      // when the grouped expr was parsed successfully and we just don't find the closing parenthesis we
-      // create an error mark there. Otherwise we just return "not parsed" since something seems to be really
-      // broken.
-      if (result.isParsed()) {
-        parser.error("Closing ')' expected");
-        result = MathematicaParser.result(token, false);
-      } else {
-        result = MathematicaParser.notParsed();
-      }
+        if (parser.eof()) {
+            parser.error("More input expected");
+            return MathematicaParser.notParsed();
+        }
+
+        MathematicaParser.AST result = parser.parseExpression();
+        if (parser.matchesToken(MathematicaElementTypes.RIGHT_PAR)) {
+            parser.myParDepth--;
+            parser.advanceLexer();
+
+            // if we find a closing ) we return the group as parsed successful, no matter whether
+            // the containing expression was parsed. Errors in the expression are marked there anyway.
+            //result = MathematicaParser.result(token, tokenType, true);
+        } else {
+            // when the grouped expr was parsed successfully and we just don't find the closing parenthesis we
+            // create an error mark there. Otherwise we just return "not parsed" since something seems to be really
+            // broken.
+            if (result.isParsed()) {
+                parser.error("Closing ')' expected");
+                //result = MathematicaParser.result(token, tokenType, false);
+            } else {
+                result = MathematicaParser.notParsed();
+            }
+        }
+        return result;
     }
-    return result;
-  }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

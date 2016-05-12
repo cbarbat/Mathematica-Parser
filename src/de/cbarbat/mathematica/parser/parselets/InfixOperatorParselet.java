@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
@@ -34,34 +36,41 @@ import de.cbarbat.mathematica.parser.ParseletProvider;
  */
 public class InfixOperatorParselet implements InfixParselet {
 
-  private final int myPrecedence;
-  private final boolean myRightAssociative;
+    private final int myPrecedence;
+    private final boolean myRightAssociative;
 
-  public InfixOperatorParselet(int precedence, boolean rightAssociative) {
-    this.myPrecedence = precedence;
-    this.myRightAssociative = rightAssociative;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-    if (!left.isValid()) return MathematicaParser.notParsed();
-
-    MathematicaElementType token = ParseletProvider.getInfixElement(this);
-
-    parser.advanceLexer();
-
-    MathematicaParser.Result result = parser.parseExpression(myPrecedence - (myRightAssociative ? 1 : 0));
-    if (result.isParsed()) {
-      result = MathematicaParser.result(token, true);
-    } else {
-      parser.error("More input expected");
+    public InfixOperatorParselet(int precedence, boolean rightAssociative) {
+        this.myPrecedence = precedence;
+        this.myRightAssociative = rightAssociative;
     }
-    return result;
-  }
 
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        if (!left.isValid()) return MathematicaParser.notParsed();
+
+        MathematicaParser.AST tree = null;
+        MathematicaLexer.Token token = parser.getToken();
+        MathematicaElementType tokenType = ParseletProvider.getInfixElement(this);
+
+        parser.advanceLexer();
+
+        MathematicaParser.AST right = parser.parseExpression(myPrecedence - (myRightAssociative ? 1 : 0));
+        if (right != null && right.isParsed()) {
+            tree = MathematicaParser.result(token, tokenType, true);
+            tree.children.add(left);
+            tree.children.add(right);
+        } else {
+            parser.error("More input expected");
+        }
+        if (tree != null) {
+            return tree;
+        }
+        return left;
+    }
+
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
+    }
 
 }

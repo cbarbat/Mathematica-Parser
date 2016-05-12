@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,9 +22,13 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
+import de.cbarbat.mathematica.parser.ParseletProvider;
+
+import static de.cbarbat.mathematica.parser.ParseletProvider.getInfixElement;
 
 /**
  * Parselet for typical postfix operators like a! or i++
@@ -32,21 +37,24 @@ import de.cbarbat.mathematica.parser.MathematicaParser;
  */
 public class PostfixOperatorParselet implements InfixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public PostfixOperatorParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
+    public PostfixOperatorParselet(int precedence) {
+        this.myPrecedence = precedence;
+    }
 
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-    MathematicaElementType token = parser.getTokenType();
-    parser.advanceLexer();
-    return MathematicaParser.result(token, true);
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        MathematicaLexer.Token token = parser.getToken();
+        parser.advanceLexer();
+        MathematicaElementType tokenType = getInfixElement(this);
+        MathematicaParser.AST tree = MathematicaParser.result(token, tokenType, left.isParsed());
+        tree.children.add(left);
+        return tree;
+    }
 
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
+    }
 }

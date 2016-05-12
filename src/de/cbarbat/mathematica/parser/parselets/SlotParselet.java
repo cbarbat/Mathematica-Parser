@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2014 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
@@ -36,25 +38,26 @@ import static de.cbarbat.mathematica.parser.MathematicaElementTypes.SLOTS;
  */
 public class SlotParselet implements PrefixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public SlotParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    final MathematicaElementType tokenType = parser.getTokenType();
-    if (SLOTS.contains(tokenType)) {
-      parser.advanceLexer();
-      return MathematicaParser.result(tokenType, true);
-    } else {
-      return MathematicaParser.notParsed();
+    public SlotParselet(int precedence) {
+        this.myPrecedence = precedence;
     }
 
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        final MathematicaLexer.Token token = parser.getToken();
+        final MathematicaElementType tokenType = token.type;
+        if (SLOTS.contains(token.type)) {
+            parser.advanceLexer();
+            return MathematicaParser.result(token, token.type, true);
+        } else {
+            return MathematicaParser.notParsed();
+        }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    }
+
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

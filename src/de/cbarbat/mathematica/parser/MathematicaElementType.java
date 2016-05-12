@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2015 Calin Barbat
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -23,15 +24,15 @@ package de.cbarbat.mathematica.parser;
 
 public class MathematicaElementType {
 
-  public String myType;
+    public String myType;
 
-  public MathematicaElementType(String aType) {
-    myType = aType;
-  }
+    public MathematicaElementType(String aType) {
+        myType = aType;
+    }
 
-  public boolean equals(MathematicaElementType met) {
-    return ((met != null) && (this.myType.equals(met.myType)));
-  }
+    public boolean equals(MathematicaElementType met) {
+        return ((met != null) && (this.myType.equals(met.myType)));
+    }
 
 
 }

@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,7 +22,9 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.CriticalParserError;
+import de.cbarbat.mathematica.parser.MathematicaElementTypes;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
 import static de.cbarbat.mathematica.parser.MathematicaElementTypes.DERIVATIVE;
@@ -35,24 +38,32 @@ import static de.cbarbat.mathematica.parser.MathematicaElementTypes.DERIVATIVE_E
  */
 public class DerivativeParselet implements InfixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public DerivativeParselet(int precedence) {
-    myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-
-    while (!parser.eof() && parser.getTokenType().equals(DERIVATIVE)) {
-      parser.advanceLexer();
+    public DerivativeParselet(int precedence) {
+        myPrecedence = precedence;
     }
 
-    return MathematicaParser.result(DERIVATIVE_EXPRESSION, true);
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        Integer repetitions = 0;
 
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
+        MathematicaLexer.Token token = parser.getToken();
+        while (!parser.eof() && parser.getTokenType().equals(DERIVATIVE)) {
+            parser.advanceLexer();
+            repetitions++;
+        }
+
+        MathematicaLexer.Token rtoken = new MathematicaLexer.Token(MathematicaElementTypes.NUMBER_EXPRESSION, repetitions.toString(), 0, repetitions.toString().length());
+        MathematicaParser.AST right = new MathematicaParser.AST(rtoken, rtoken.type, true);
+        MathematicaParser.AST tree = MathematicaParser.result(token, DERIVATIVE_EXPRESSION, true);
+        tree.children.add(right);
+        tree.children.add(left);
+        return tree;
+    }
+
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
+    }
 }

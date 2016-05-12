@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2014 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
@@ -30,30 +32,33 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
  * @author patrick (3/27/13)
  */
 public class PutParselet implements InfixParselet {
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public PutParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-    if (!left.isValid()) return MathematicaParser.notParsed();
-
-    final MathematicaElementType tokenType = parser.getTokenType();
-    final MathematicaElementType type = tokenType.equals(MathematicaElementTypes.PUT) ? MathematicaElementTypes.PUT_EXPRESSION : MathematicaElementTypes.PUT_APPEND_EXPRESSION;
-    parser.advanceLexer();
-    if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER) || parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_BEGIN)) {
-      final MathematicaParser.Result result1 = parser.parseExpression(myPrecedence);
-      return MathematicaParser.result(type, result1.isParsed());
-    } else {
-      parser.error("Could not parse right hand side of Put or PutAppend expression");
-      return MathematicaParser.result(type, false);
+    public PutParselet(int precedence) {
+        this.myPrecedence = precedence;
     }
-  }
 
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        if (!left.isValid()) return MathematicaParser.notParsed();
+
+        final MathematicaLexer.Token token = parser.getToken();
+        final MathematicaElementType type = token.type.equals(MathematicaElementTypes.PUT) ? MathematicaElementTypes.PUT_EXPRESSION : MathematicaElementTypes.PUT_APPEND_EXPRESSION;
+        parser.advanceLexer();
+        if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER) || parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_BEGIN)) {
+            final MathematicaParser.AST right = parser.parseExpression(myPrecedence);
+            MathematicaParser.AST tree = MathematicaParser.result(token, type, right.isParsed());
+            tree.children.add(left);
+            tree.children.add(right);
+            return tree;
+        } else {
+            parser.error("Could not parse right hand side of Put or PutAppend expression");
+            return MathematicaParser.result(token, type, false);
+        }
+    }
+
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
+    }
 }

@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,44 +22,52 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 import de.cbarbat.mathematica.parser.MathematicaElementTypes;
 
+import java.util.ArrayList;
+
 /**
  * @author patrick (3/27/13)
  */
 public class CompoundExpressionParselet implements InfixParselet {
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public CompoundExpressionParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-    if (!left.isValid()) return MathematicaParser.notParsed();
-
-    MathematicaElementType token = MathematicaElementTypes.COMPOUND_EXPRESSION_EXPRESSION;
-    parser.advanceLexer();
-
-    boolean ok = true;
-
-    while (true) {
-      MathematicaParser.Result result = parser.parseExpression(myPrecedence);
-      if (!result.isValid()) break;
-      ok &= result.isParsed();
-      if (parser.matchesToken(MathematicaElementTypes.SEMICOLON)) parser.advanceLexer();
-      else break;
+    public CompoundExpressionParselet(int precedence) {
+        this.myPrecedence = precedence;
     }
 
-    return MathematicaParser.result(token, ok);
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
+    }
 
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        if (!left.isValid()) return MathematicaParser.notParsed();
+
+        ArrayList<MathematicaParser.AST> sequence = new ArrayList<MathematicaParser.AST>();
+        sequence.add(left);
+        MathematicaLexer.Token token = parser.getToken();
+        MathematicaElementType tokenType = MathematicaElementTypes.COMPOUND_EXPRESSION_EXPRESSION;
+        parser.advanceLexer();
+
+        boolean parsed = true;
+
+        while (true) {
+            MathematicaParser.AST tree = parser.parseExpression(myPrecedence);
+            if (!tree.isValid()) break;
+            parsed &= tree.isParsed();
+            sequence.add(tree);
+            if (parser.matchesToken(MathematicaElementTypes.SEMICOLON)) parser.advanceLexer();
+            else break;
+        }
+
+        MathematicaParser.AST result = MathematicaParser.result(token, tokenType, parsed);
+        result.children = sequence;
+        return result;
+    }
 }

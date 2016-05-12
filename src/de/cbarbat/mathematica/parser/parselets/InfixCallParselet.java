@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 import de.cbarbat.mathematica.parser.MathematicaElementTypes;
@@ -35,38 +37,42 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
  */
 public class InfixCallParselet implements InfixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public InfixCallParselet(int precedence) {
-    myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-
-    parser.advanceLexer();
-    MathematicaParser.Result operator = parser.parseExpression(myPrecedence);
-
-    if (parser.matchesToken(MathematicaElementTypes.INFIX_CALL)) {
-      parser.advanceLexer();
-      MathematicaParser.Result operand2 = parser.parseExpression(myPrecedence);
-      if (!operand2.isParsed()) {
-        parser.error("Argument arg2 missing in 'arg1 ~ op ~ arg2'");
-      }
-      return MathematicaParser.result(MathematicaElementTypes.INFIX_CALL_EXPRESSION, operator.isParsed() && operand2.isParsed());
-    } else {
-      // if the operator was not parsed successfully we will not display a parsing error
-      if (operator.isParsed()) {
-        parser.error("'~' expected in infix notation");
-      } else {
-        parser.error("Operator op in 'arg1 ~ op ~ arg2' expected for infix notation");
-      }
-      return MathematicaParser.result(MathematicaElementTypes.INFIX_CALL_EXPRESSION, false);
+    public InfixCallParselet(int precedence) {
+        myPrecedence = precedence;
     }
-  }
 
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        MathematicaLexer.Token token = parser.getToken();
+        parser.advanceLexer();
+        MathematicaParser.AST operator = parser.parseExpression(myPrecedence);
+
+        if (parser.matchesToken(MathematicaElementTypes.INFIX_CALL)) {
+            parser.advanceLexer();
+            MathematicaParser.AST operand2 = parser.parseExpression(myPrecedence);
+            if (!operand2.isParsed()) {
+                parser.error("Argument arg2 missing in 'arg1 ~ op ~ arg2'");
+            }
+            MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.INFIX_CALL_EXPRESSION, operator.isParsed() && operand2.isParsed());
+            tree.children.add(operator);
+            tree.children.add(left);
+            tree.children.add(operand2);
+            return tree;
+        } else {
+            // if the operator was not parsed successfully we will not display a parsing error
+            if (operator.isParsed()) {
+                parser.error("'~' expected in infix notation");
+            } else {
+                parser.error("Operator op in 'arg1 ~ op ~ arg2' expected for infix notation");
+            }
+            return MathematicaParser.result(token, MathematicaElementTypes.INFIX_CALL_EXPRESSION, false);
+        }
+    }
+
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
+    }
 }

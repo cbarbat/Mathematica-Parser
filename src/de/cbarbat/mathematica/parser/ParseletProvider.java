@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe & 2015 Calin Barbat
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,10 +22,9 @@
 
 package de.cbarbat.mathematica.parser;
 
-import de.cbarbat.mathematica.parser.parselets.*;
-
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
+import de.cbarbat.mathematica.parser.parselets.*;
 
 /**
  * This works like a singleton but instead of providing an instance of the class, you can access the Mathematica
@@ -37,231 +37,220 @@ import java.util.Map;
  */
 public class ParseletProvider {
 
-  private static final Map<MathematicaElementType, PrefixParselet> ELEMENT_TO_PREFIX = new HashMap<MathematicaElementType, PrefixParselet>();
-  private static final Map<MathematicaElementType, InfixParselet> ELEMENT_TO_INFIX = new HashMap<MathematicaElementType, InfixParselet>();
-  private static final Map<PrefixParselet, MathematicaElementType> PREFIX_TO_ELEMENT = new HashMap<PrefixParselet, MathematicaElementType>();
-  private static final Map<InfixParselet, MathematicaElementType> INFIX_TO_ELEMENT = new HashMap<InfixParselet, MathematicaElementType>();
+    private static final Map<MathematicaElementType, PrefixParselet> ELEMENT_TO_PREFIX = new HashMap<MathematicaElementType, PrefixParselet>();
+    private static final Map<MathematicaElementType, InfixParselet> ELEMENT_TO_INFIX = new HashMap<MathematicaElementType, InfixParselet>();
+    private static final Map<PrefixParselet, MathematicaElementType> PREFIX_TO_ELEMENT = new HashMap<PrefixParselet, MathematicaElementType>();
+    private static final Map<InfixParselet, MathematicaElementType> INFIX_TO_ELEMENT = new HashMap<InfixParselet, MathematicaElementType>();
 
-  static {
-    register(MathematicaElementTypes.LEFT_PAR, MathematicaElementTypes.GROUP_EXPRESSION, new GroupParselet(85)); // Group(()
-    register(MathematicaElementTypes.LEFT_BRACE, MathematicaElementTypes.LIST_EXPRESSION, new ListParselet(82)); // List({)
-    register(MathematicaElementTypes.LEFT_ASSOCIATION, MathematicaElementTypes.ASSOCIATION_EXPRESSION, new AssociationParselet(82)); // Association <|"foo"->1|>
+    static {
 
-    register(MathematicaElementTypes.NUMBER, MathematicaElementTypes.NUMBER_EXPRESSION, new NumberParselet(80)); // Number(123)
-    register(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.SYMBOL_EXPRESSION, new SymbolParselet(80)); // Symbol($var)
-    register(MathematicaElementTypes.STRINGIFIED_IDENTIFIER, MathematicaElementTypes.STRINGIFIED_SYMBOL_EXPRESSION, new SymbolParselet(80)); // Symbol($var)
-    register(MathematicaElementTypes.STRING_LITERAL_BEGIN, MathematicaElementTypes.STRING_LITERAL_EXPRESSION, new StringParselet(80)); // MString(abc)
+        register(MathematicaElementTypes.LEFT_PAR, MathematicaElementTypes.GROUP_EXPRESSION, new GroupParselet(85)); // Group(()
 
-    register(MathematicaElementTypes.DOUBLE_COLON, MathematicaElementTypes.MESSAGE_NAME_EXPRESSION, new MessageNameParselet(78)); // MessageName(::)
+        register(MathematicaElementTypes.LEFT_BRACE, MathematicaElementTypes.LIST_EXPRESSION, new ListParselet(82)); // List({)
+        register(MathematicaElementTypes.LEFT_ASSOCIATION, MathematicaElementTypes.ASSOCIATION_EXPRESSION, new AssociationParselet(82)); // Association <|"foo"->1|>
 
-    register(MathematicaElementTypes.SLOT_SEQUENCE, MathematicaElementTypes.SLOT_SEQUENCE, new SlotParselet(77)); // ##n expressions
-    register(MathematicaElementTypes.SLOT, MathematicaElementTypes.SLOT, new SlotParselet(77)); // ##n expressions
-    register(MathematicaElementTypes.ASSOCIATION_SLOT, MathematicaElementTypes.ASSOCIATION_SLOT, new SlotExpressionParselet(77)); // #foo123 expressions
+        register(MathematicaElementTypes.NUMBER, MathematicaElementTypes.NUMBER_EXPRESSION, new NumberParselet(80)); // Number(123)
+        register(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.SYMBOL_EXPRESSION, new SymbolParselet(80)); // Symbol($var)
+        register(MathematicaElementTypes.STRINGIFIED_IDENTIFIER, MathematicaElementTypes.STRINGIFIED_SYMBOL_EXPRESSION, new SymbolParselet(80)); // Symbol($var)
+        register(MathematicaElementTypes.STRING_LITERAL_BEGIN, MathematicaElementTypes.STRING_LITERAL_EXPRESSION, new StringParselet(80)); // MString(abc)
 
-    register(MathematicaElementTypes.BLANK, MathematicaElementTypes.BLANK_EXPRESSION, new BlankParselet(76)); // Blank(_)
-    register(MathematicaElementTypes.BLANK, MathematicaElementTypes.BLANK_EXPRESSION, new PrefixBlankParselet(76)); // Blank(_)
-    register(MathematicaElementTypes.BLANK_SEQUENCE, MathematicaElementTypes.BLANK_SEQUENCE_EXPRESSION, new BlankSequenceParselet(76)); // BlankSequence(__)
-    register(MathematicaElementTypes.BLANK_SEQUENCE, MathematicaElementTypes.BLANK_SEQUENCE_EXPRESSION, new PrefixBlankSequenceParselet(76)); // BlankSequence(__)
-    register(MathematicaElementTypes.BLANK_NULL_SEQUENCE, MathematicaElementTypes.BLANK_NULL_SEQUENCE_EXPRESSION, new BlankNullSequenceParselet(76)); // BlankNullSequence(___)
-    register(MathematicaElementTypes.BLANK_NULL_SEQUENCE, MathematicaElementTypes.BLANK_NULL_SEQUENCE_EXPRESSION, new PrefixBlankNullSequenceParselet(76)); // BlankNullSequence(___)
-    postfix(MathematicaElementTypes.DEFAULT, MathematicaElementTypes.DEFAULT_EXPRESSION, 76); // Default(_.)
-    register(MathematicaElementTypes.DEFAULT, MathematicaElementTypes.DEFAULT_EXPRESSION, new PrefixDefaultParselet(76)); // Default(_.)
+        register(MathematicaElementTypes.DOUBLE_COLON, MathematicaElementTypes.MESSAGE_NAME_EXPRESSION, new MessageNameParselet(78)); // MessageName(::)
 
-    register(MathematicaElementTypes.GET, MathematicaElementTypes.GET_PREFIX, new PrefixGetParselet(74)); // Get(<<)
+        register(MathematicaElementTypes.SLOT_SEQUENCE, MathematicaElementTypes.SLOT_SEQUENCE, new SlotParselet(77)); // ##n expressions
+        register(MathematicaElementTypes.SLOT, MathematicaElementTypes.SLOT, new SlotParselet(77)); // ##n expressions
+        register(MathematicaElementTypes.ASSOCIATION_SLOT, MathematicaElementTypes.ASSOCIATION_SLOT, new SlotExpressionParselet(77)); // #foo123 expressions
 
-    infixLeft(MathematicaElementTypes.QUESTION_MARK, MathematicaElementTypes.PATTERN_TEST_EXPRESSION, 72); // PatternTest(?)
+        register(MathematicaElementTypes.BLANK, MathematicaElementTypes.BLANK_EXPRESSION, new PrefixBlankParselet(76)); // Blank(_)
+        register(MathematicaElementTypes.BLANK_SEQUENCE, MathematicaElementTypes.BLANK_SEQUENCE_EXPRESSION, new PrefixBlankSequenceParselet(76)); // BlankSequence(__)
+        register(MathematicaElementTypes.BLANK_NULL_SEQUENCE, MathematicaElementTypes.BLANK_NULL_SEQUENCE_EXPRESSION, new PrefixBlankNullSequenceParselet(76)); // BlankNullSequence(___)
+        register(MathematicaElementTypes.DEFAULT, MathematicaElementTypes.DEFAULT_EXPRESSION, new PrefixDefaultParselet(76)); // Default(_.)
 
-    register(MathematicaElementTypes.LEFT_BRACKET, MathematicaElementTypes.FUNCTION_CALL_EXPRESSION, new FunctionCallParselet(70)); // FunctionCall([)
+        register(MathematicaElementTypes.GET, MathematicaElementTypes.GET_PREFIX, new PrefixGetParselet(74)); // Get(<<)
 
-    infixLeft(MathematicaElementTypes.COMPOSITION, MathematicaElementTypes.COMPOSITION_EXPRESSION, 69); // Composition (@*)
-    infixLeft(MathematicaElementTypes.RIGHT_COMPOSITION, MathematicaElementTypes.RIGHT_COMPOSITION_EXPRESSION, 69); // RightComposition (/*)
+        infixLeft(MathematicaElementTypes.QUESTION_MARK, MathematicaElementTypes.PATTERN_TEST_EXPRESSION, 72); // PatternTest(?)
 
-    postfix(MathematicaElementTypes.INCREMENT, MathematicaElementTypes.INCREMENT_POSTFIX, 68);
-    postfix(MathematicaElementTypes.DECREMENT, MathematicaElementTypes.DECREMENT_POSTFIX, 68);
+        register(MathematicaElementTypes.LEFT_BRACKET, MathematicaElementTypes.FUNCTION_CALL_EXPRESSION, new FunctionCallParselet(70)); // FunctionCall([)
 
-    prefix(MathematicaElementTypes.INCREMENT, MathematicaElementTypes.PRE_INCREMENT_PREFIX, 66); // PreIncrement(++)
-    prefix(MathematicaElementTypes.DECREMENT, MathematicaElementTypes.PRE_DECREMENT_PREFIX, 66); // PreDecrement(--)
+        infixLeft(MathematicaElementTypes.COMPOSITION, MathematicaElementTypes.COMPOSITION_EXPRESSION, 69); // Composition (@*)
+        infixLeft(MathematicaElementTypes.RIGHT_COMPOSITION, MathematicaElementTypes.RIGHT_COMPOSITION_EXPRESSION, 69); // RightComposition (/*)
 
-    infixRight(MathematicaElementTypes.PREFIX_CALL, MathematicaElementTypes.PREFIX_CALL_EXPRESSION, 64); // PrefixCall(@)
+        postfix(MathematicaElementTypes.INCREMENT, MathematicaElementTypes.INCREMENT_POSTFIX, 68);
+        postfix(MathematicaElementTypes.DECREMENT, MathematicaElementTypes.DECREMENT_POSTFIX, 68);
 
-    register(MathematicaElementTypes.INFIX_CALL, MathematicaElementTypes.INFIX_CALL_EXPRESSION, new InfixCallParselet(62)); // InfixCall(~)
+        prefix(MathematicaElementTypes.INCREMENT, MathematicaElementTypes.PRE_INCREMENT_PREFIX, 66); // PreIncrement(++)
+        prefix(MathematicaElementTypes.DECREMENT, MathematicaElementTypes.PRE_DECREMENT_PREFIX, 66); // PreDecrement(--)
 
-    infixRight(MathematicaElementTypes.MAP, MathematicaElementTypes.MAP_EXPRESSION, 60); // Map(/@)
-    infixRight(MathematicaElementTypes.MAP_ALL, MathematicaElementTypes.MAP_ALL_EXPRESSION, 60); // MapAll(//@)
-    infixRight(MathematicaElementTypes.APPLY, MathematicaElementTypes.APPLY_EXPRESSION, 60); // Apply(@@)
-    infixRight(MathematicaElementTypes.APPLY1, MathematicaElementTypes.APPLY1_EXPRESSION, 60); // Apply1(@@@)
+        infixRight(MathematicaElementTypes.PREFIX_CALL, MathematicaElementTypes.PREFIX_CALL_EXPRESSION, 64); // PrefixCall(@)
 
-    postfix(MathematicaElementTypes.EXCLAMATION_MARK, MathematicaElementTypes.FACTORIAL_POSTFIX, 58);
+        register(MathematicaElementTypes.INFIX_CALL, MathematicaElementTypes.INFIX_CALL_EXPRESSION, new InfixCallParselet(62)); // InfixCall(~)
 
-    register(MathematicaElementTypes.DERIVATIVE, MathematicaElementTypes.DERIVATIVE_EXPRESSION, new DerivativeParselet(56)); // Derivative(')
+        infixRight(MathematicaElementTypes.MAP, MathematicaElementTypes.MAP_EXPRESSION, 60); // Map(/@)
+        infixRight(MathematicaElementTypes.MAP_ALL, MathematicaElementTypes.MAP_ALL_EXPRESSION, 60); // MapAll(//@)
+        infixRight(MathematicaElementTypes.APPLY, MathematicaElementTypes.APPLY_EXPRESSION, 60); // Apply(@@)
+        infixRight(MathematicaElementTypes.APPLY1, MathematicaElementTypes.APPLY1_EXPRESSION, 60); // Apply1(@@@)
 
-    infixLeft(MathematicaElementTypes.STRING_JOIN, MathematicaElementTypes.STRING_JOIN_EXPRESSION, 54); // StringJoin(<>)
+        postfix(MathematicaElementTypes.EXCLAMATION_MARK, MathematicaElementTypes.FACTORIAL_POSTFIX, 58);
 
-    infixRight(MathematicaElementTypes.POWER, MathematicaElementTypes.POWER_EXPRESSION, 52); // Power(^)
+        register(MathematicaElementTypes.DERIVATIVE, MathematicaElementTypes.DERIVATIVE_EXPRESSION, new DerivativeParselet(56)); // Derivative(')
 
-    infixLeft(MathematicaElementTypes.NON_COMMUTATIVE_MULTIPLY, MathematicaElementTypes.NON_COMMUTATIVE_MULTIPLY_EXPRESSION, 50); // NonCommutativeMultiply(**)
+        infixLeft(MathematicaElementTypes.STRING_JOIN, MathematicaElementTypes.STRING_JOIN_EXPRESSION, 54); // StringJoin(<>)
 
-    infixLeft(MathematicaElementTypes.POINT, MathematicaElementTypes.DOT_EXPRESSION, 48); // Dot(.)
+        infixRight(MathematicaElementTypes.POWER, MathematicaElementTypes.POWER_EXPRESSION, 52); // Power(^)
 
-    prefix(MathematicaElementTypes.MINUS, MathematicaElementTypes.UNARY_MINUS_PREFIX, 46); // UnaryMinus(-)
-    prefix(MathematicaElementTypes.PLUS, MathematicaElementTypes.UNARY_PLUS_PREFIX, 46); // UnaryPlus(+)
+        infixLeft(MathematicaElementTypes.NON_COMMUTATIVE_MULTIPLY, MathematicaElementTypes.NON_COMMUTATIVE_MULTIPLY_EXPRESSION, 50); // NonCommutativeMultiply(**)
 
-    infixLeft(MathematicaElementTypes.DIVIDE, MathematicaElementTypes.DIVIDE_EXPRESSION, 44); // Divide(/)
+        infixLeft(MathematicaElementTypes.POINT, MathematicaElementTypes.DOT_EXPRESSION, 48); // Dot(.)
 
-    infixLeft(MathematicaElementTypes.TIMES, MathematicaElementTypes.TIMES_EXPRESSION, 42); // Times(*)
+        prefix(MathematicaElementTypes.MINUS, MathematicaElementTypes.UNARY_MINUS_PREFIX, 46); // UnaryMinus(-)
+        prefix(MathematicaElementTypes.PLUS, MathematicaElementTypes.UNARY_PLUS_PREFIX, 46); // UnaryPlus(+)
 
-    infixLeft(MathematicaElementTypes.PLUS, MathematicaElementTypes.PLUS_EXPRESSION, 40); // Plus(+)
-    infixLeft(MathematicaElementTypes.MINUS, MathematicaElementTypes.MINUS_EXPRESSION, 40); // Minus(-)
+        infixLeft(MathematicaElementTypes.DIVIDE, MathematicaElementTypes.DIVIDE_EXPRESSION, 44); // Divide(/)
 
-    register(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new SpanParselet(38)); // Span(;;)
-    registerPrefixExplicitly(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new PrefixSpanParselet(38)); // Span(;;)
+        infixLeft(MathematicaElementTypes.TIMES, MathematicaElementTypes.TIMES_EXPRESSION, 42); // Times(*)
 
-    infixLeft(MathematicaElementTypes.UNDIRECTED_EDGE, MathematicaElementTypes.UNDIRECTED_EDGE_EXPRESSION, 37); // UndirectedEdge(<->)
+        infixLeft(MathematicaElementTypes.PLUS, MathematicaElementTypes.PLUS_EXPRESSION, 40); // Plus(+)
+        infixLeft(MathematicaElementTypes.MINUS, MathematicaElementTypes.MINUS_EXPRESSION, 40); // Minus(-)
 
-    infixLeft(MathematicaElementTypes.EQUAL, MathematicaElementTypes.EQUAL_EXPRESSION, 36); // Equal(==)
-    infixLeft(MathematicaElementTypes.UNEQUAL, MathematicaElementTypes.UNEQUAL_EXPRESSION, 36); // Unequal(!=)
-    infixLeft(MathematicaElementTypes.GREATER, MathematicaElementTypes.GREATER_EXPRESSION, 36); // Greater(>)
-    infixLeft(MathematicaElementTypes.GREATER_EQUAL, MathematicaElementTypes.GREATER_EQUAL_EXPRESSION, 36); // GreaterEqual(>=)
-    infixLeft(MathematicaElementTypes.LESS, MathematicaElementTypes.LESS_EXPRESSION, 36); // Less(<)
-    infixLeft(MathematicaElementTypes.LESS_EQUAL, MathematicaElementTypes.LESS_EQUAL_EXPRESSION, 36); // LessEqual(<=)
+//        register(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new SpanParselet(38)); // Span(;;)
+//        register(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new PrefixSpanParselet(38)); // Span(;;)
 
-    infixLeft(MathematicaElementTypes.SAME_Q, MathematicaElementTypes.SAME_Q_EXPRESSION, 34); // SameQ(===)
-    infixLeft(MathematicaElementTypes.UNSAME_Q, MathematicaElementTypes.UNSAME_Q_EXPRESSION, 34); // UnsameQ(=!=)
+        infixLeft(MathematicaElementTypes.UNDIRECTED_EDGE, MathematicaElementTypes.UNDIRECTED_EDGE_EXPRESSION, 37); // UndirectedEdge(<->)
 
-    prefix(MathematicaElementTypes.EXCLAMATION_MARK, MathematicaElementTypes.NOT_PREFIX, 32); // Not(!)
+        infixLeft(MathematicaElementTypes.EQUAL, MathematicaElementTypes.EQUAL_EXPRESSION, 36); // Equal(==)
+        infixLeft(MathematicaElementTypes.UNEQUAL, MathematicaElementTypes.UNEQUAL_EXPRESSION, 36); // Unequal(!=)
+        infixLeft(MathematicaElementTypes.GREATER, MathematicaElementTypes.GREATER_EXPRESSION, 36); // Greater(>)
+        infixLeft(MathematicaElementTypes.GREATER_EQUAL, MathematicaElementTypes.GREATER_EQUAL_EXPRESSION, 36); // GreaterEqual(>=)
+        infixLeft(MathematicaElementTypes.LESS, MathematicaElementTypes.LESS_EXPRESSION, 36); // Less(<)
+        infixLeft(MathematicaElementTypes.LESS_EQUAL, MathematicaElementTypes.LESS_EQUAL_EXPRESSION, 36); // LessEqual(<=)
 
-    infixLeft(MathematicaElementTypes.AND, MathematicaElementTypes.AND_EXPRESSION, 30); // And(&&)
+        infixLeft(MathematicaElementTypes.SAME_Q, MathematicaElementTypes.SAME_Q_EXPRESSION, 34); // SameQ(===)
+        infixLeft(MathematicaElementTypes.UNSAME_Q, MathematicaElementTypes.UNSAME_Q_EXPRESSION, 34); // UnsameQ(=!=)
 
-    infixLeft(MathematicaElementTypes.OR, MathematicaElementTypes.OR_EXPRESSION, 28); // Or(||)
+        prefix(MathematicaElementTypes.EXCLAMATION_MARK, MathematicaElementTypes.NOT_PREFIX, 32); // Not(!)
 
-    postfix(MathematicaElementTypes.REPEATED, MathematicaElementTypes.REPEATED_POSTFIX, 26);
-    postfix(MathematicaElementTypes.REPEATED_NULL, MathematicaElementTypes.REPEATED_NULL_POSTFIX, 26);
+        infixLeft(MathematicaElementTypes.AND, MathematicaElementTypes.AND_EXPRESSION, 30); // And(&&)
 
-    infixLeft(MathematicaElementTypes.ALTERNATIVE, MathematicaElementTypes.ALTERNATIVE_EXPRESSION, 24); // Alternative(|)
+        infixLeft(MathematicaElementTypes.OR, MathematicaElementTypes.OR_EXPRESSION, 28); // Or(||)
 
-    infixLeft(MathematicaElementTypes.COLON, MathematicaElementTypes.PATTERN_EXPRESSION, 22); // Optional(:) and Patter (:)
-    register(MathematicaElementTypes.COLON, MathematicaElementTypes.PATTERN_EXPRESSION, new PatternParselet(22)); // MessageName(::)
+        postfix(MathematicaElementTypes.REPEATED, MathematicaElementTypes.REPEATED_POSTFIX, 26);
+        postfix(MathematicaElementTypes.REPEATED_NULL, MathematicaElementTypes.REPEATED_NULL_POSTFIX, 26);
 
-    infixLeft(MathematicaElementTypes.STRING_EXPRESSION, MathematicaElementTypes.STRING_EXPRESSION_EXPRESSION, 20); // StringExpression(~~)
+        infixLeft(MathematicaElementTypes.ALTERNATIVE, MathematicaElementTypes.ALTERNATIVE_EXPRESSION, 24); // Alternative(|)
 
-    infixLeft(MathematicaElementTypes.CONDITION, MathematicaElementTypes.CONDITION_EXPRESSION, 18); // Condition(/;)
+        infixLeft(MathematicaElementTypes.COLON, MathematicaElementTypes.PATTERN_EXPRESSION, 22); // Optional(:) and Pattern (:)
+        register(MathematicaElementTypes.COLON, MathematicaElementTypes.PATTERN_EXPRESSION, new PatternParselet(22)); // MessageName(::)
 
-    infixRight(MathematicaElementTypes.RULE, MathematicaElementTypes.RULE_EXPRESSION, 16); // Rule(->)
-    infixRight(MathematicaElementTypes.RULE_DELAYED, MathematicaElementTypes.RULE_DELAYED_EXPRESSION, 16); // RuleDelayed(:>)
+        infixLeft(MathematicaElementTypes.STRING_EXPRESSION, MathematicaElementTypes.STRING_EXPRESSION_EXPRESSION, 20); // StringExpression(~~)
 
-    infixLeft(MathematicaElementTypes.REPLACE_ALL, MathematicaElementTypes.REPLACE_ALL_EXPRESSION, 14); // ReplaceAll(/.)
-    infixLeft(MathematicaElementTypes.REPLACE_REPEATED, MathematicaElementTypes.REPLACE_REPEATED_EXPRESSION, 14); // ReplaceRepeated(//.)
+        infixLeft(MathematicaElementTypes.CONDITION, MathematicaElementTypes.CONDITION_EXPRESSION, 18); // Condition(/;)
 
-    infixRight(MathematicaElementTypes.ADD_TO, MathematicaElementTypes.ADD_TO_EXPRESSION, 12); // AddTo(+=)
-    infixRight(MathematicaElementTypes.SUBTRACT_FROM, MathematicaElementTypes.SUBTRACT_FROM_EXPRESSION, 12); // SubtractFrom(-=)
-    infixRight(MathematicaElementTypes.TIMES_BY, MathematicaElementTypes.TIMES_BY_EXPRESSION, 12); // TimesBy(*=)
-    infixRight(MathematicaElementTypes.DIVIDE_BY, MathematicaElementTypes.DIVIDE_BY_EXPRESSION, 12); // DivideBy(/=)
+        infixRight(MathematicaElementTypes.RULE, MathematicaElementTypes.RULE_EXPRESSION, 16); // Rule(->)
+        infixRight(MathematicaElementTypes.RULE_DELAYED, MathematicaElementTypes.RULE_DELAYED_EXPRESSION, 16); // RuleDelayed(:>)
 
-    postfix(MathematicaElementTypes.FUNCTION, MathematicaElementTypes.FUNCTION_POSTFIX, 10);
+        infixLeft(MathematicaElementTypes.REPLACE_ALL, MathematicaElementTypes.REPLACE_ALL_EXPRESSION, 14); // ReplaceAll(/.)
+        infixLeft(MathematicaElementTypes.REPLACE_REPEATED, MathematicaElementTypes.REPLACE_REPEATED_EXPRESSION, 14); // ReplaceRepeated(//.)
 
-    infixLeft(MathematicaElementTypes.POSTFIX, MathematicaElementTypes.POSTFIX_EXPRESSION, 8); // Postfix(//)
+        infixRight(MathematicaElementTypes.ADD_TO, MathematicaElementTypes.ADD_TO_EXPRESSION, 12); // AddTo(+=)
+        infixRight(MathematicaElementTypes.SUBTRACT_FROM, MathematicaElementTypes.SUBTRACT_FROM_EXPRESSION, 12); // SubtractFrom(-=)
+        infixRight(MathematicaElementTypes.TIMES_BY, MathematicaElementTypes.TIMES_BY_EXPRESSION, 12); // TimesBy(*=)
+        infixRight(MathematicaElementTypes.DIVIDE_BY, MathematicaElementTypes.DIVIDE_BY_EXPRESSION, 12); // DivideBy(/=)
 
-    infixRight(MathematicaElementTypes.SET, MathematicaElementTypes.SET_EXPRESSION, 6); // Set(=)
-    infixRight(MathematicaElementTypes.SET_DELAYED, MathematicaElementTypes.SET_DELAYED_EXPRESSION, 6); // SetDelayed(:=)
-    infixRight(MathematicaElementTypes.UP_SET, MathematicaElementTypes.UP_SET_EXPRESSION, 6); // UpSet(^=)
-    infixRight(MathematicaElementTypes.UP_SET_DELAYED, MathematicaElementTypes.UP_SET_DELAYED_EXPRESSION, 6); // UpSetDelayed(^:=)
-    register(MathematicaElementTypes.TAG_SET, MathematicaElementTypes.TAG_SET_EXPRESSION, new TagSetParselet(6)); // TagSet(/:)
-    postfix(MathematicaElementTypes.UNSET, MathematicaElementTypes.UNSET_EXPRESSION, 6); // Unset(=.)
+        postfix(MathematicaElementTypes.FUNCTION, MathematicaElementTypes.FUNCTION_POSTFIX, 10);
 
-    register(MathematicaElementTypes.PUT, MathematicaElementTypes.PUT_EXPRESSION, new PutParselet(4)); // Put(>>)
-    register(MathematicaElementTypes.PUT_APPEND, MathematicaElementTypes.PUT_APPEND_EXPRESSION, new PutParselet(4)); // PutAppend(>>>)
+        infixLeft(MathematicaElementTypes.POSTFIX, MathematicaElementTypes.POSTFIX_EXPRESSION, 8); // Postfix(//)
 
-    register(MathematicaElementTypes.SEMICOLON, MathematicaElementTypes.COMPOUND_EXPRESSION_EXPRESSION, new CompoundExpressionParselet(2)); // CompoundExpression(;)
+        infixRight(MathematicaElementTypes.SET, MathematicaElementTypes.SET_EXPRESSION, 6); // Set(=)
+        infixRight(MathematicaElementTypes.SET_DELAYED, MathematicaElementTypes.SET_DELAYED_EXPRESSION, 6); // SetDelayed(:=)
+        infixRight(MathematicaElementTypes.UP_SET, MathematicaElementTypes.UP_SET_EXPRESSION, 6); // UpSet(^=)
+        infixRight(MathematicaElementTypes.UP_SET_DELAYED, MathematicaElementTypes.UP_SET_DELAYED_EXPRESSION, 6); // UpSetDelayed(^:=)
+        register(MathematicaElementTypes.TAG_SET, MathematicaElementTypes.TAG_SET_EXPRESSION, new TagSetParselet(6)); // TagSet(/:)
+        postfix(MathematicaElementTypes.UNSET, MathematicaElementTypes.UNSET_EXPRESSION, 6); // Unset(=.)
 
-  }
+        register(MathematicaElementTypes.PUT, MathematicaElementTypes.PUT_EXPRESSION, new PutParselet(4)); // Put(>>)
+        register(MathematicaElementTypes.PUT_APPEND, MathematicaElementTypes.PUT_APPEND_EXPRESSION, new PutParselet(4)); // PutAppend(>>>)
 
-  private ParseletProvider() {
-  }
-
-  /**
-   * Provides the prefix-parselet which is connected to the specified token.
-   *
-   * @param token
-   *     The token for which the parselet is wanted
-   * @return The {@link PrefixParselet} if available for this token and {@code null} otherwise.
-   */
-  public static PrefixParselet getPrefixParselet(MathematicaElementType token) {
-    return ELEMENT_TO_PREFIX.get(token);
-  }
-
-  /**
-   * Provides the infix-parselet which is connected to the specified token.
-   *
-   * @param token
-   *     The token for which the parselet is wanted
-   * @return The {@link InfixParselet} if available for this token and {@code null} otherwise.
-   */
-  public static InfixParselet getInfixParselet(MathematicaElementType token) {
-    return ELEMENT_TO_INFIX.get(token);
-  }
-
-  /**
-   * Provides the parselet with the element type of the node for the AST. When an expression was parsed with a specific
-   * {@link InfixParselet} the node in the AST is then the {@link MathematicaElementType} which is returned by this method. E.g.
-   * When a PLUS token arises in the lexer token stream first the infix-parselet of the PLUS token is extracted and it
-   * parses the left and right operand. Afterwards it marks the whole
-   * expression a+b in the AST tree as being a node of type returned by this method.
-   *
-   * @param parselet
-   *     The parselet for which the node type is wanted
-   * @return The node type.
-   */
-  public static MathematicaElementType getInfixElement(InfixParselet parselet) {
-    MathematicaElementType elm = INFIX_TO_ELEMENT.get(parselet);
-    if (elm == null) {
-      return MathematicaElementTypes.FAILBACK;
+        register(MathematicaElementTypes.SEMICOLON, MathematicaElementTypes.COMPOUND_EXPRESSION_EXPRESSION, new CompoundExpressionParselet(2)); // CompoundExpression(;)
     }
-    return elm;
-  }
 
-  /**
-   * Please see {@link #getInfixElement(InfixParselet)}
-   *
-   * @param parselet
-   *     The parselet for which the type is wanted
-   * @return The element of the node in the AST tree
-   */
-  public static MathematicaElementType getPrefixElement(PrefixParselet parselet) {
-    MathematicaElementType elm = PREFIX_TO_ELEMENT.get(parselet);
-    if (elm == null) {
-      return MathematicaElementTypes.FAILBACK;
+    private ParseletProvider() {
     }
-    return elm;
-  }
 
-  private static void register(MathematicaElementType token, MathematicaElementType expressionToken, PrefixParselet parselet) {
-    ELEMENT_TO_PREFIX.put(token, parselet);
-    PREFIX_TO_ELEMENT.put(parselet, expressionToken);
-  }
+    /**
+     * Provides the prefix-parselet which is connected to the specified token.
+     *
+     * @param token The token for which the parselet is wanted
+     * @return The {@link PrefixParselet} if available for this token and {@code null} otherwise.
+     */
+    public static PrefixParselet getPrefixParselet(MathematicaElementType token) {
+        return ELEMENT_TO_PREFIX.get(token);
+    }
 
-  private static void register(MathematicaElementType token, MathematicaElementType expressionToken, InfixParselet parselet) {
-    ELEMENT_TO_INFIX.put(token, parselet);
-    INFIX_TO_ELEMENT.put(parselet, expressionToken);
-  }
+    /**
+     * Provides the infix-parselet which is connected to the specified token.
+     *
+     * @param token The token for which the parselet is wanted
+     * @return The {@link InfixParselet} if available for this token and {@code null} otherwise.
+     */
+    public static InfixParselet getInfixParselet(MathematicaElementType token) {
+        return ELEMENT_TO_INFIX.get(token);
+    }
 
-  private static void registerPrefixExplicitly(MathematicaElementType token, MathematicaElementType expressionToken, PrefixParselet parselet) {
-    ELEMENT_TO_PREFIX.put(token, parselet);
-    PREFIX_TO_ELEMENT.put(parselet, expressionToken);
-  }
+    /**
+     * Provides the parselet with the element type of the node for the AST. When an expression was parsed with a specific
+     * {@link InfixParselet} the node in the AST is then the {@link MathematicaElementType} which is returned by this method. E.g.
+     * When a PLUS token arises in the lexer token stream first the infix-parselet of the PLUS token is extracted and it
+     * parses the left and right operand. Afterwards it marks the whole
+     * expression a+b in the AST tree as being a node of type returned by this method.
+     *
+     * @param parselet The parselet for which the node type is wanted
+     * @return The node type.
+     */
+    public static MathematicaElementType getInfixElement(InfixParselet parselet) {
+        MathematicaElementType elm = INFIX_TO_ELEMENT.get(parselet);
+        if (elm == null) {
+            return MathematicaElementTypes.FAILBACK;
+        }
+        return elm;
+    }
 
-  private static void postfix(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
-    register(token, expressionToken, new PostfixOperatorParselet(precedence));
-  }
+    /**
+     * Please see {@link #getInfixElement(InfixParselet)}
+     *
+     * @param parselet The parselet for which the type is wanted
+     * @return The element of the node in the AST tree
+     */
+    public static MathematicaElementType getPrefixElement(PrefixParselet parselet) {
+        MathematicaElementType elm = PREFIX_TO_ELEMENT.get(parselet);
+        if (elm == null) {
+            return MathematicaElementTypes.FAILBACK;
+        }
+        return elm;
+    }
 
-  private static void prefix(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
-    register(token, expressionToken, new PrefixOperatorParselet(precedence));
-  }
+    private static void register(MathematicaElementType token, MathematicaElementType expressionToken, PrefixParselet parselet) {
+        ELEMENT_TO_PREFIX.put(token, parselet);
+        PREFIX_TO_ELEMENT.put(parselet, expressionToken);
+    }
 
-  private static void infixLeft(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
-    register(token, expressionToken, new InfixOperatorParselet(precedence, false));
-  }
+    private static void register(MathematicaElementType token, MathematicaElementType expressionToken, InfixParselet parselet) {
+        ELEMENT_TO_INFIX.put(token, parselet);
+        INFIX_TO_ELEMENT.put(parselet, expressionToken);
+    }
 
-  private static void infixRight(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
-    register(token, expressionToken, new InfixOperatorParselet(precedence, true));
-  }
+    private static void postfix(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
+        register(token, expressionToken, new PostfixOperatorParselet(precedence));
+    }
+
+    private static void prefix(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
+        register(token, expressionToken, new PrefixOperatorParselet(precedence));
+    }
+
+    private static void infixLeft(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
+        register(token, expressionToken, new InfixOperatorParselet(precedence, false));
+    }
+
+    private static void infixRight(MathematicaElementType token, MathematicaElementType expressionToken, int precedence) {
+        register(token, expressionToken, new InfixOperatorParselet(precedence, true));
+    }
+
 }

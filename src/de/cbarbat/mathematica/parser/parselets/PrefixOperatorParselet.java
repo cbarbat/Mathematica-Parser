@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
@@ -32,22 +34,24 @@ import de.cbarbat.mathematica.parser.ParseletProvider;
  * @author patrick (3/27/13)
  */
 public class PrefixOperatorParselet implements PrefixParselet {
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public PrefixOperatorParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
+    public PrefixOperatorParselet(int precedence) {
+        this.myPrecedence = precedence;
+    }
 
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    parser.advanceLexer();
-    MathematicaElementType token = ParseletProvider.getPrefixElement(this);
-    MathematicaParser.Result result = parser.parseExpression(myPrecedence);
-    return MathematicaParser.result(token, result.isParsed());
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        MathematicaLexer.Token token = parser.getToken();
+        parser.advanceLexer();
+        MathematicaElementType tokenType = ParseletProvider.getPrefixElement(this);
+        MathematicaParser.AST result = parser.parseExpression(myPrecedence);
+        MathematicaParser.AST tree = MathematicaParser.result(token, tokenType, result.isParsed());
+        tree.children.add(result);
+        return tree;
+    }
 
-  }
-
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

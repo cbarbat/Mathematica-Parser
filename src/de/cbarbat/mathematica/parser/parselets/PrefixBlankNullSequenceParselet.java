@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,8 +22,10 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
+import de.cbarbat.mathematica.parser.MathematicaElementTypes;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
 import static de.cbarbat.mathematica.parser.MathematicaElementTypes.BLANK_NULL_SEQUENCE_EXPRESSION;
@@ -33,21 +36,43 @@ import static de.cbarbat.mathematica.parser.MathematicaElementTypes.BLANK_NULL_S
  * @author patrick (3/27/13)
  */
 public class PrefixBlankNullSequenceParselet implements PrefixParselet {
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public PrefixBlankNullSequenceParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
+    public PrefixBlankNullSequenceParselet(int precedence) {
+        this.myPrecedence = precedence;
+    }
 
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    MathematicaElementType token = BLANK_NULL_SEQUENCE_EXPRESSION;
-    parser.advanceLexer();
-    MathematicaParser.Result result = parser.parseExpression(myPrecedence);
-    return MathematicaParser.result(token, !result.isValid() || result.isParsed());
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        parser.optional = false;
+        MathematicaLexer.Token token = parser.getToken(); //___
+        MathematicaElementType tokenType = MathematicaElementTypes.BLANK_NULL_SEQUENCE_EXPRESSION;
+        MathematicaParser.AST result;
+        MathematicaParser.AST tree = null;
+        if (!parser.isNextWhitespace()) {
+            parser.advanceLexer();
+            if (!parser.matchesToken(MathematicaElementTypes.POINT)) {
+                result = parser.parseExpression(myPrecedence);
+                if (result != null) {
+                    tree = MathematicaParser.result(token, tokenType, !result.isValid() || result.isParsed());
+                    tree.children.add(result);
+                }
+            } else {
+                MathematicaParser.AST subtree = MathematicaParser.result(token, tokenType, true);
+                parser.optional = true;
+                token = parser.getToken();
+                tree = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
+                tree.children.add(subtree);
+                parser.advanceLexer();
+            }
+        } else {
+            parser.advanceLexer();
+            tree = MathematicaParser.result(token, tokenType, true);
+        }
+        return tree;
+    }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

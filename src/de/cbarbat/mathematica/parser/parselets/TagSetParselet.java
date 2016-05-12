@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
@@ -33,62 +35,56 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
  */
 public class TagSetParselet implements InfixParselet {
 
-  private final int myPrecedence;
+    int myPrecedence;
 
-  public TagSetParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-    if (parser.matchesToken(MathematicaElementTypes.TAG_SET)) {
-      parser.advanceLexer();
-    } else {
-      throw new CriticalParserError("Expected token TAG_SET");
-    }
-    // In the next line we parse expr1 of expr0/:expr1 and we reduce the precedence by one because it is
-    // right associative. Using SetDelayed (:=) which has the same precedence the following expression:
-    // a /: b := c := d is then correctly parsed as a /: b := (c := d)
-    MathematicaParser.Result expr1 = parser.parseExpression(myPrecedence);
-
-    if (!expr1.isValid()) {
-      parser.error("Missing 'expr' between '/\\:' and '\\:\\='");
-      return MathematicaParser.result(MathematicaElementTypes.TAG_SET_EXPRESSION, false);
+    public TagSetParselet(int precedence) {
+        this.myPrecedence = precedence;
     }
 
-//    MathematicaElementType tokenType = parser.getTokenTypeSave(tagSetMark);
-    MathematicaElementType tokenType = parser.getTokenType();
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        MathematicaLexer.Token token1 = parser.getToken();
+        if (parser.matchesToken(MathematicaElementTypes.TAG_SET)) {
+            parser.advanceLexer();
+        } else {
+            throw new CriticalParserError("Expected token TAG_SET");
+        }
+        // In the next line we parse expr1 of expr0/:expr1 and we reduce the precedence by one because it is
+        // right associative. Using SetDelayed (:=) which has the same precedence the following expression:
+        // a /: b := c := d is then correctly parsed as a /: b := (c := d)
+        MathematicaParser.AST expr1 = parser.parseExpression(myPrecedence - 1);
 
-    if (tokenType == null) {
-      parser.error("Missing '\\:\\=','\\=' or '\\=.' needed to complete TagSet");
-      return MathematicaParser.result(MathematicaElementTypes.TAG_SET_EXPRESSION, false);
+        if (!expr1.isValid()) {
+            parser.error("Missing 'expr' between '/\\:' and '\\:\\='");
+            return MathematicaParser.result(token1, MathematicaElementTypes.TAG_SET_EXPRESSION, false);
+        }
+
+        MathematicaElementType treeType;
+        MathematicaLexer.Token token;
+        if (expr1.type == MathematicaElementTypes.UNSET_EXPRESSION) {
+            treeType = MathematicaElementTypes.TAG_UNSET_EXPRESSION;
+            token = new MathematicaLexer.Token(treeType, "/:", token1.start, token1.start+2);
+        } else
+        if (expr1.type == MathematicaElementTypes.SET_EXPRESSION) {
+            treeType = MathematicaElementTypes.TAG_SET_EXPRESSION;
+            token = new MathematicaLexer.Token(treeType, "/:", token1.start, token1.start+2);
+        } else
+        if (expr1.type == MathematicaElementTypes.SET_DELAYED_EXPRESSION) {
+            treeType = MathematicaElementTypes.TAG_SET_DELAYED_EXPRESSION;
+            token = new MathematicaLexer.Token(treeType, "/:", token1.start, token1.start+2);
+        } else {
+            // if we are here, the second operator (:=, = or =.) is missing and we give up
+            parser.error("Missing '\\:\\=','\\=' or '\\=.' needed to complete TagSet");
+            return MathematicaParser.result(token1, MathematicaElementTypes.TAG_SET_EXPRESSION, false);
+        }
+        MathematicaParser.AST tree = MathematicaParser.result(token, treeType, expr1.isParsed());
+        tree.children = expr1.children;
+        tree.children.add(0, left);
+        return tree;
     }
 
-    // Form expr0 /: expr1 =. where nothing needs to be parsed right of the =.
-    if (tokenType.equals(MathematicaElementTypes.UNSET)) {
-      parser.advanceLexer();
-      return MathematicaParser.result(MathematicaElementTypes.TAG_UNSET_EXPRESSION, expr1.isParsed());
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
     }
-
-    // Form expr0 /: expr1 := expr2 or expr0 /: expr1 = expr2 where we need to parse expr2
-    if ((tokenType.equals(MathematicaElementTypes.SET)) || (tokenType.equals(MathematicaElementTypes.SET_DELAYED))) {
-      parser.advanceLexer();
-      MathematicaParser.Result expr2 = parser.parseExpression(myPrecedence);
-      MathematicaElementType endType = tokenType.equals(MathematicaElementTypes.SET) ? MathematicaElementTypes.TAG_SET_EXPRESSION : MathematicaElementTypes.TAG_SET_DELAYED_EXPRESSION;
-      if (!expr2.isValid()) {
-        parser.error("Expression expected");
-      }
-
-      return MathematicaParser.result(endType, expr1.isParsed() && expr2.isParsed());
-    }
-
-    // if we are here, the second operator (:=, = or =.) is missing and we give up
-    parser.error("Missing '\\:\\=','\\=' or '\\=.' needed to complete TagSet");
-    return MathematicaParser.result(MathematicaElementTypes.TAG_SET_EXPRESSION, false);
-  }
-
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
 }

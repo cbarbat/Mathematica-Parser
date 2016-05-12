@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2015 Calin Barbat
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -24,6 +25,7 @@ package de.cbarbat.mathematica.parser.parselets;
 import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
+import de.cbarbat.mathematica.parser.MathematicaElementTypes;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
 /**
@@ -34,21 +36,20 @@ import de.cbarbat.mathematica.parser.MathematicaParser;
  */
 public class NumberParselet implements PrefixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public NumberParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
+    public NumberParselet(int precedence) {
+        this.myPrecedence = precedence;
+    }
 
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    MathematicaLexer.Token token = parser.getToken();
-    System.out.println("Number: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
-    parser.advanceLexer();
-    return MathematicaParser.result(token.type, true);
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        MathematicaLexer.Token token = parser.getToken();
+        parser.advanceLexer();
+        return MathematicaParser.result(token, MathematicaElementTypes.NUMBER_EXPRESSION, true);
+    }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

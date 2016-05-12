@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
@@ -32,34 +34,36 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
  * @author patrick (7/1/13)
  */
 public class PatternParselet implements InfixParselet {
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public PatternParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-    if (!left.isValid()) {
-      return MathematicaParser.notParsed();
+    public PatternParselet(int precedence) {
+        this.myPrecedence = precedence;
     }
 
-    parser.advanceLexer();
-    MathematicaParser.Result result = parser.parseExpression(myPrecedence);
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        if (!left.isValid()) return MathematicaParser.notParsed();
 
-    MathematicaElementType expressionType = left.getToken().equals(MathematicaElementTypes.SYMBOL_EXPRESSION) ?
-        MathematicaElementTypes.PATTERN_EXPRESSION : MathematicaElementTypes.OPTIONAL_EXPRESSION;
+        MathematicaLexer.Token token = parser.getToken();
+        parser.advanceLexer();
+        MathematicaParser.AST right = parser.parseExpression(myPrecedence);
 
-    if (!result.isParsed()) {
-      parser.error("Could not parse pattern or optional argument expression");
+        MathematicaElementType expressionType = left.getToken().equals(MathematicaElementTypes.SYMBOL_EXPRESSION) ?
+                MathematicaElementTypes.PATTERN_EXPRESSION : MathematicaElementTypes.OPTIONAL_EXPRESSION;
+
+        if (!right.isParsed()) {
+            parser.error("Could not parse pattern or optional argument expression");
+        }
+
+        MathematicaParser.AST tree = MathematicaParser.result(token, expressionType, right.isParsed());
+        tree.children.add(left);
+        tree.children.add(right);
+        return tree;
     }
 
-    return MathematicaParser.result(expressionType, result.isParsed());
-  }
-
-  @Override
-  public int getMyPrecedence() {
-    return myPrecedence;
-  }
+    @Override
+    public int getMyPrecedence() {
+        return myPrecedence;
+    }
 
 }

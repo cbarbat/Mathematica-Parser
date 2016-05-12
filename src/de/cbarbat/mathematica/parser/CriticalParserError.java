@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -27,7 +28,7 @@ package de.cbarbat.mathematica.parser;
  * @author patrick (4/7/13)
  */
 public class CriticalParserError extends Throwable {
-  public CriticalParserError(String s) {
-    super(s);
-  }
+    public CriticalParserError(String s) {
+        super(s);
+    }
 }

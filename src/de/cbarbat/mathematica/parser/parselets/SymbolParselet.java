@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -24,6 +25,7 @@ package de.cbarbat.mathematica.parser.parselets;
 import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
+import de.cbarbat.mathematica.parser.MathematicaElementTypes;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
 import static de.cbarbat.mathematica.parser.MathematicaElementTypes.*;
@@ -37,29 +39,51 @@ import static de.cbarbat.mathematica.parser.MathematicaElementTypes.*;
  */
 public class SymbolParselet implements PrefixParselet {
 
-  private final int myPrecedence;
+    private final int myPrecedence;
 
-  public SymbolParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    MathematicaElementType finalExpressionType;
-    final MathematicaLexer.Token token = parser.getToken();
-    System.out.println("Symbol: " + token.text + ":" + token.start + ":" + token.end + ":" + token.type.myType);
-    if (token.type.equals(IDENTIFIER)) {
-      finalExpressionType = SYMBOL_EXPRESSION;
-    } else if (token.type.equals(STRINGIFIED_IDENTIFIER)) {
-      finalExpressionType = STRINGIFIED_SYMBOL_EXPRESSION;
-    } else {
-      return MathematicaParser.notParsed();
+    public SymbolParselet(int precedence) {
+        this.myPrecedence = precedence;
     }
-    parser.advanceLexer();
-    return MathematicaParser.result(finalExpressionType, true);
-  }
 
-  public int getPrecedence() {
-    return myPrecedence;
-  }
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+        MathematicaElementType finalExpressionType;
+        MathematicaLexer.Token token = parser.getToken();
+        if (token.type.equals(IDENTIFIER)) {
+            finalExpressionType = SYMBOL_EXPRESSION;
+            if ((!parser.isNextWhitespace()) && (
+                    parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK_NULL_SEQUENCE) ||
+                            parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK_SEQUENCE) ||
+                            parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK) ||
+                            parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.DEFAULT)
+            )) {
+                parser.advanceLexer();
+                MathematicaParser.AST left = MathematicaParser.result(token, finalExpressionType, true);
+                MathematicaParser.AST right = parser.parseExpression(76);
+                MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.PATTERN_EXPRESSION, right.isParsed());
+                tree.children.add(left);
+                if (!parser.optional) {
+                    tree.children.add(right);
+                    return tree;
+                } else if (parser.optional) {
+                    tree.children.add(right.children.get(0));
+                    parser.optional = false;
+                    token = parser.getPrevToken();
+                    MathematicaParser.AST tree2 = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
+                    tree2.children.add(tree);
+                    return tree2;
+                }
+            }
+        } else if (token.type.equals(STRINGIFIED_IDENTIFIER)) {
+            finalExpressionType = STRINGIFIED_SYMBOL_EXPRESSION;
+        } else {
+            return MathematicaParser.notParsed();
+        }
+        parser.advanceLexer();
+        return MathematicaParser.result(token, finalExpressionType, true);
+    }
+
+    public int getPrecedence() {
+        return myPrecedence;
+    }
 }

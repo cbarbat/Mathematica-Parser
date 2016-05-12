@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -18,76 +19,76 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
-package de.cbarbat.mathematica.parser.parselets;
-
-import de.cbarbat.mathematica.parser.CriticalParserError;
-import de.cbarbat.mathematica.parser.MathematicaParser;
-
-import static de.cbarbat.mathematica.parser.MathematicaElementTypes.SPAN;
-import static de.cbarbat.mathematica.parser.MathematicaElementTypes.SPAN_EXPRESSION;
-import static de.cbarbat.mathematica.parser.ParseletProvider.getPrefixParselet;
-
-/**
- * Parses <code>Span</code> constructs like <code>list[[;;]]</code> or <code>list[[;;i]]</code> where <code>;;</code> is
- * a prefix operator.
- *
- * @author patrick (3/27/13)
- */
-public class PrefixSpanParselet implements PrefixParselet {
-  private final int myPrecedence;
-
-  public PrefixSpanParselet(int precedence) {
-    this.myPrecedence = precedence;
-  }
-
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
-    boolean skipped = false;
-
-    if (parser.matchesToken(SPAN)) {
-      parser.advanceLexer();
-    } else {
-      throw new CriticalParserError("SPAN token ';;' expected");
-    }
-
-    // if we meet a second ;; right after the first ;; we just skip it
-    if (parser.matchesToken(SPAN)) {
-      skipped = true;
-      parser.advanceLexer();
-    }
-
-    PrefixParselet nextPrefix = getPrefixParselet(parser.getTokenType());
-    if (nextPrefix == null) {
-      if (skipped) {
-        parser.error("Expression expected after ';; ;;'");
-      } else {
-      }
-      return MathematicaParser.result(SPAN_EXPRESSION, !skipped);
-    }
-
-    MathematicaParser.Result expr1 = parser.parseExpression(myPrecedence);
-
-    // if we had ;;;;expr1
-    if (skipped) {
-      return MathematicaParser.result(SPAN_EXPRESSION, expr1.isParsed());
-    }
-
-    if (parser.matchesToken(SPAN)) {
-      parser.advanceLexer();
-      MathematicaParser.Result expr2 = parser.parseExpression(myPrecedence);
-      if (expr2.isParsed()) {
-      } else
-        parser.error("Expression expected after ';;expr1;;'");
-      return MathematicaParser.result(SPAN_EXPRESSION, expr1.isParsed() && expr2.isParsed());
-    } else {
-      // we have the form expr0;;expr1
-      return MathematicaParser.result(SPAN_EXPRESSION, expr1.isParsed());
-    }
-  }
-
-  public int getPrecedence() {
-    return myPrecedence;
-  }
-
-}
+//
+//package de.cbarbat.mathematica.parser.parselets;
+//
+//import de.cbarbat.mathematica.parser.CriticalParserError;
+//import de.cbarbat.mathematica.parser.MathematicaParser;
+//
+//import static de.cbarbat.mathematica.parser.MathematicaElementTypes.SPAN;
+//import static de.cbarbat.mathematica.parser.MathematicaElementTypes.SPAN_EXPRESSION;
+//import static de.cbarbat.mathematica.parser.ParseletProvider.getPrefixParselet;
+//
+///**
+// * Parses <code>Span</code> constructs like <code>list[[;;]]</code> or <code>list[[;;i]]</code> where <code>;;</code> is
+// * a prefix operator.
+// *
+// * @author patrick (3/27/13)
+// */
+//public class PrefixSpanParselet implements PrefixParselet {
+//  private final int myPrecedence;
+//
+//  public PrefixSpanParselet(int precedence) {
+//    this.myPrecedence = precedence;
+//  }
+//
+//  @Override
+//  public MathematicaParser.Result parse(MathematicaParser parser) throws CriticalParserError {
+//    boolean skipped = false;
+//
+//    if (parser.matchesToken(SPAN)) {
+//      parser.advanceLexer();
+//    } else {
+//      throw new CriticalParserError("SPAN token ';;' expected");
+//    }
+//
+//    // if we meet a second ;; right after the first ;; we just skip it
+//    if (parser.matchesToken(SPAN)) {
+//      skipped = true;
+//      parser.advanceLexer();
+//    }
+//
+//    PrefixParselet nextPrefix = getPrefixParselet(parser.getTokenType());
+//    if (nextPrefix == null) {
+//      if (skipped) {
+//        parser.error("Expression expected after ';; ;;'");
+//      } else {
+//      }
+//      return MathematicaParser.result(SPAN_EXPRESSION, !skipped);
+//    }
+//
+//    MathematicaParser.Result expr1 = parser.parseExpression(myPrecedence);
+//
+//    // if we had ;;;;expr1
+//    if (skipped) {
+//      return MathematicaParser.result(SPAN_EXPRESSION, expr1.isParsed());
+//    }
+//
+//    if (parser.matchesToken(SPAN)) {
+//      parser.advanceLexer();
+//      MathematicaParser.Result expr2 = parser.parseExpression(myPrecedence);
+//      if (expr2.isParsed()) {
+//      } else
+//        parser.error("Expression expected after ';;expr1;;'");
+//      return MathematicaParser.result(SPAN_EXPRESSION, expr1.isParsed() && expr2.isParsed());
+//    } else {
+//      // we have the form expr0;;expr1
+//      return MathematicaParser.result(SPAN_EXPRESSION, expr1.isParsed());
+//    }
+//  }
+//
+//  public int getPrecedence() {
+//    return myPrecedence;
+//  }
+//
+//}

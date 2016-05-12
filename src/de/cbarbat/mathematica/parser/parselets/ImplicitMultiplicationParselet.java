@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2013 Patrick Scheibe
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -21,6 +22,7 @@
 
 package de.cbarbat.mathematica.parser.parselets;
 
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 import de.cbarbat.mathematica.parser.MathematicaElementTypes;
@@ -34,24 +36,28 @@ import de.cbarbat.mathematica.parser.MathematicaElementTypes;
  */
 public class ImplicitMultiplicationParselet implements InfixParselet {
 
-  private static final int PRECEDENCE = 42;
+    private static final int PRECEDENCE = 42;
 
-  @Override
-  public MathematicaParser.Result parse(MathematicaParser parser, MathematicaParser.Result left) throws CriticalParserError {
-    if (!left.isValid()) return MathematicaParser.notParsed();
+    @Override
+    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+        if (!left.isValid()) return MathematicaParser.notParsed();
+        MathematicaParser.AST tree = null;
 
-    MathematicaParser.Result result = parser.parseExpression(PRECEDENCE);
-    if (result.isParsed()) {
-      result = MathematicaParser.result(MathematicaElementTypes.TIMES_EXPRESSION, true);
-    } else {
-      parser.error("More input expected");
+        MathematicaParser.AST right = parser.parseExpression(PRECEDENCE);
+        if (right.isParsed()) {
+            MathematicaLexer.Token token = new MathematicaLexer.Token(MathematicaElementTypes.TIMES, " ", right.token.end + 1,  right.token.end + 2);
+            tree = new MathematicaParser.AST(token, MathematicaElementTypes.TIMES_EXPRESSION, true);
+            tree.children.add(left);
+            tree.children.add(right);
+        } else {
+            parser.error("More input expected");
+        }
+        return tree;
     }
-    return result;
-  }
 
-  @Override
-  public int getMyPrecedence() {
-    return PRECEDENCE;
-  }
+    @Override
+    public int getMyPrecedence() {
+        return PRECEDENCE;
+    }
 
 }
