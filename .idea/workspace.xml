@@ -2,58 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ed38af1-0eba-42e3-a653-e1ae4ecc4fa0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/math.skeleton" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testcases.m" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/intellij/util/text/CharArrayUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/BlankNullSequenceParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/BlankParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/BlankSequenceParselet.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/Mathematica.flex" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/Mathematica.flex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/MathematicaLexer.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/MathematicaLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/_MathematicaLexer.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/_MathematicaLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/package-info.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/lexer/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/CriticalParserError.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/CriticalParserError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/MathematicaElementType.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/MathematicaElementType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/MathematicaElementTypes.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/MathematicaElementTypes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/MathematicaParser.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/MathematicaParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/ParseletProvider.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/ParseletProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/package-info.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/AssociationParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/AssociationParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/CompoundExpressionParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/CompoundExpressionParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/DerivativeParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/DerivativeParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/FunctionCallParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/FunctionCallParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/GroupParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/GroupParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/ImplicitMultiplicationParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/ImplicitMultiplicationParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/InfixCallParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/InfixCallParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/InfixOperatorParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/InfixOperatorParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/InfixParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/InfixParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/ListParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/ListParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/MessageNameParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/MessageNameParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/NumberParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/NumberParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/ParserUtil.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/ParserUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PatternParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PatternParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PostfixOperatorParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PostfixOperatorParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixBlankNullSequenceParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixBlankNullSequenceParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixBlankParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixBlankParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixBlankSequenceParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixBlankSequenceParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixDefaultParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixDefaultParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixGetParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixGetParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixOperatorParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixOperatorParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PutParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/PutParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SlotExpressionParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SlotExpressionParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SlotParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SlotParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SpanParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SpanParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/StringParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/StringParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SymbolParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/SymbolParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/TagSetParselet.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/TagSetParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/package-info.java" afterPath="$PROJECT_DIR$/src/de/cbarbat/mathematica/parser/parselets/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.m" afterPath="$PROJECT_DIR$/test.m" />
     </list>
     <ignored path="Mathematica-Parser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -188,9 +137,9 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Calin Barbat &lt;calin.barbat@web.de&gt;" />
         <option value="cbarbat@github.com" />
         <option value="cbarbat" />
-        <option value="Calin Barbat &lt;calin.barbat@web.de&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -301,6 +250,38 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="Mathematica-Parser">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Mathematica-Parser">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Mathematica-Parser">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="de/cbarbat/mathematica">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -636,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1437748527232</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="The parser has an AST and prints it.">
+      <created>1463067738752</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1463067738752</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -652,11 +640,11 @@
       <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.215625" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.47497392" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3204301" sideWeight="0.43430656" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3204301" sideWeight="0.43430656" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16319083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16319083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
