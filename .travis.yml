@@ -1,0 +1,21 @@
+language: java
+jdk: oraclejdk8
+script: mvn clean package
+install: true
+deploy:
+  provider: releases
+  skip_cleanup: true
+  file: $CI_HOME/target/Mathematica-Parser.jar
+  on:
+    repo: cbarbat/Mathematica-Parser
+    tags: true
+    branches:
+      only:
+      - develop
+env:
+  global:
+  - GH_PROJECT_NAME: Mathematica-Parser
+  - GIT_AUTHOR_NAME: TravisCI
+  - GIT_AUTHOR_EMAIL: noreply@travis-ci.org
+  - CI_HOME=`pwd`
+

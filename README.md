@@ -33,21 +33,16 @@ expressions or error messages if there are any problems.
 
 You can use this ***Pratt and recursive descent parser*** parser as basis for other developments.
 
-##![Development][dev-image] Development
+##![Development][dev-image] Development [![Build Status](https://travis-ci.org/cbarbat/Mathematica-Parser.svg?branch=develop)](https://travis-ci.org/cbarbat/Mathematica-Parser)
 
 ### Code
 
-Use *IntelliJ IDEA Community Edition*. Go to *Settings* and define an *External Tool* for
-calling *JFlex*. Of course you have to install *JFlex* if it is not present on your system.
-Use the following values:
+Use *IntelliJ IDEA Community Edition*. This project is setup as a Maven project and uses the
+Maven JFlex plugin.
 
-- Program: /opt/idea/jre/jre/bin/java
-- Parameters: -Xmx512m -Dfile.encoding=UTF-8 -classpath /usr/share/java/JFlex.jar JFlex.Main -skel math.skeleton -d $FileDir$ $FileName$
-- Working Directory: $FileDir$
-
-If you want to crawl through the code, you should use the
-[develop branch](https://github.com/cbarbat/Mathematica-Parser/tree/develop). It has the newest
-version of the code.
+If you want to crawl through the code, you can use the
+[develop branch](https://github.com/cbarbat/Mathematica-Parser/tree/develop). It has the
+newest version of the code.
 
 ### To do
 
@@ -61,8 +56,9 @@ Here is some food for thought:
 - **a_b_** is parsed as **Pattern[a, Blank[Pattern[b, Blank[]]]]** - *Mathematica* parses it as
   **Times[Blank[],Pattern[a,Blank[b]]]**
 
-- make a lot of tests to see where this parser is identical to *Mathematica* and where it differs
+- make a lot of JUnit tests to see where this parser is identical to *Mathematica* and where it differs
 
+- see if the lexer can support Unicode characters
 
 ##![Contact][con-image] Credits, Contact and Licensing
 
@@ -71,6 +67,10 @@ Here is some food for thought:
 This project would not have been possible without the pioneering work of Patrick Scheibe:
 
 - [halirutan:](https://github.com/halirutan) Provided his *IntelliJ IDEA Plugin* as open source.
+
+For valuable discussions and ideas I would like to thank Axel Kramer of Symja fame:
+
+- [axkr:](https://github.com/axkr) Author of Symja.
 
 ###Contact
 
