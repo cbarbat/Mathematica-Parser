@@ -23,10 +23,7 @@
 package main.java.parser.parselets;
 
 import main.java.lexer.MathematicaLexer;
-import main.java.parser.MathematicaElementType;
-import main.java.parser.CriticalParserError;
-import main.java.parser.MathematicaParser;
-import main.java.parser.MathematicaElementTypes;
+import main.java.parser.*;
 
 /**
  * Parses _expr. Note expr must not be present
@@ -43,25 +40,29 @@ public class PrefixBlankParselet implements PrefixParselet {
     @Override
     public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
         parser.optional = false;
+        parser.pattern = false;
         MathematicaLexer.Token token = parser.getToken(); //_
         MathematicaElementType tokenType = MathematicaElementTypes.BLANK_EXPRESSION;
         MathematicaParser.AST result;
         MathematicaParser.AST tree = null;
         if (!parser.isNextWhitespace()) {
             parser.advanceLexer();
-            if (!parser.matchesToken(MathematicaElementTypes.POINT)) {
+            if (parser.matchesToken(MathematicaElementTypes.IDENTIFIER)) {
+                parser.pattern = true;
                 result = parser.parseExpression(myPrecedence);
                 if (result != null) {
                     tree = MathematicaParser.result(token, tokenType, !result.isValid() || result.isParsed());
                     tree.children.add(result);
                 }
-            } else {
+            } else if (parser.matchesToken(MathematicaElementTypes.POINT)) {
                 MathematicaParser.AST subtree = MathematicaParser.result(token, tokenType, true);
                 parser.optional = true;
                 token = parser.getToken();
                 tree = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
                 tree.children.add(subtree);
                 parser.advanceLexer();
+            } else {
+                tree = MathematicaParser.result(token, tokenType, true);
             }
         } else {
             parser.advanceLexer();
@@ -69,5 +70,4 @@ public class PrefixBlankParselet implements PrefixParselet {
         }
         return tree;
     }
-
 }

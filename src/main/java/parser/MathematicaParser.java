@@ -47,6 +47,7 @@ public class MathematicaParser {
     public int myBraceDepth;
     public int myBracketDepth;
     public boolean optional; // flag if a dot (Optional) was seen
+    public boolean pattern; // flag if a pattern (blank(s)) was seen
 
     public MathematicaParser(MathematicaLexer ml) {
         myLexer = ml;

@@ -42,26 +42,20 @@ public class PrefixBlankNullSequenceParselet implements PrefixParselet {
 
     @Override
     public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
-        parser.optional = false;
         MathematicaLexer.Token token = parser.getToken(); //___
         MathematicaElementType tokenType = MathematicaElementTypes.BLANK_NULL_SEQUENCE_EXPRESSION;
         MathematicaParser.AST result;
         MathematicaParser.AST tree = null;
         if (!parser.isNextWhitespace()) {
             parser.advanceLexer();
-            if (!parser.matchesToken(MathematicaElementTypes.POINT)) {
+            if (parser.matchesToken(MathematicaElementTypes.IDENTIFIER)) {
                 result = parser.parseExpression(myPrecedence);
                 if (result != null) {
                     tree = MathematicaParser.result(token, tokenType, !result.isValid() || result.isParsed());
                     tree.children.add(result);
                 }
             } else {
-                MathematicaParser.AST subtree = MathematicaParser.result(token, tokenType, true);
-                parser.optional = true;
-                token = parser.getToken();
-                tree = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
-                tree.children.add(subtree);
-                parser.advanceLexer();
+                tree = MathematicaParser.result(token, tokenType, true);
             }
         } else {
             parser.advanceLexer();

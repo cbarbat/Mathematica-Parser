@@ -47,28 +47,32 @@ public class SymbolParselet implements PrefixParselet {
         MathematicaLexer.Token token = parser.getToken();
         if (token.type.equals(IDENTIFIER)) {
             finalExpressionType = SYMBOL_EXPRESSION;
-            if ((!parser.isNextWhitespace()) && (
-                    parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK_NULL_SEQUENCE) ||
-                            parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK_SEQUENCE) ||
-                            parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK) ||
-                            parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.DEFAULT)
-            )) {
-                parser.advanceLexer();
-                MathematicaParser.AST left = MathematicaParser.result(token, finalExpressionType, true);
-                MathematicaParser.AST right = parser.parseExpression(76);
-                MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.PATTERN_EXPRESSION, right.isParsed());
-                tree.children.add(left);
-                if (!parser.optional) {
-                    tree.children.add(right);
-                    return tree;
-                } else {
-                    tree.children.add(right.children.get(0));
-                    parser.optional = false;
-                    token = parser.getPrevToken();
-                    MathematicaParser.AST tree2 = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
-                    tree2.children.add(tree);
-                    return tree2;
+            if (!parser.pattern) {
+                if ((!parser.isNextWhitespace()) && (
+                        parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK_NULL_SEQUENCE) ||
+                                parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK_SEQUENCE) ||
+                                parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.BLANK) ||
+                                parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.DEFAULT)
+                )) {
+                    parser.advanceLexer();
+                    MathematicaParser.AST left = MathematicaParser.result(token, finalExpressionType, true);
+                    MathematicaParser.AST right = parser.parseExpression(76);
+                    MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.PATTERN_EXPRESSION, right.isParsed());
+                    tree.children.add(left);
+                    if (!parser.optional) {
+                        tree.children.add(right);
+                        return tree;
+                    } else {
+                        tree.children.add(right.children.get(0));
+                        parser.optional = false;
+                        token = parser.getPrevToken();
+                        MathematicaParser.AST tree2 = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
+                        tree2.children.add(tree);
+                        return tree2;
+                    }
                 }
+            } else {
+                parser.pattern = false;
             }
         } else if (token.type.equals(STRINGIFIED_IDENTIFIER)) {
             finalExpressionType = STRINGIFIED_SYMBOL_EXPRESSION;
@@ -78,5 +82,4 @@ public class SymbolParselet implements PrefixParselet {
         parser.advanceLexer();
         return MathematicaParser.result(token, finalExpressionType, true);
     }
-
 }

@@ -50,12 +50,6 @@ Here is some food for thought:
 
 - the two **Span** parselets are missing/commented out and must still be implemented
 
-- **a_2** is parsed as **Pattern[a, Blank[2]]** - *Mathematica* parses it as
-  **Times[2, Pattern[a, Blank[]]]**
-
-- **a_b_** is parsed as **Pattern[a, Blank[Pattern[b, Blank[]]]]** - *Mathematica* parses it as
-  **Times[Blank[],Pattern[a,Blank[b]]]**
-
 - make a lot of JUnit tests to see where this parser is identical to *Mathematica* and where it differs
 
 - see if the lexer can support Unicode characters
