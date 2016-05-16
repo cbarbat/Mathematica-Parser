@@ -19,6 +19,12 @@ My parser differs however significantly from Patrick's parser. I hope to have im
 
 - **TagSetParselet**
 
+- **PrefixBlankParselet**
+
+- **PrefixBlankSequenceParselet**
+
+- **PrefixBlankNullSequenceParselet**
+
 I also deleted the three infix blank/blank sequence/blank null sequence expression parselets
 as they are not needed anymore.
 
@@ -31,7 +37,7 @@ These files must contain valid *Mathematica* expressions.
 They will be parsed and the program prints a sort of abstract syntax tree or full form of the
 expressions or error messages if there are any problems.
 
-You can use this ***Pratt and recursive descent parser*** parser as basis for other developments.
+You can use this ***Pratt parser*** as basis for other developments.
 
 ##![Development][dev-image] Development [![Build Status](https://travis-ci.org/cbarbat/Mathematica-Parser.svg?branch=develop)](https://travis-ci.org/cbarbat/Mathematica-Parser)
 
@@ -49,6 +55,8 @@ newest version of the code.
 Here is some food for thought:
 
 - the two **Span** parselets are missing/commented out and must still be implemented
+
+- add support for boxes syntax like \\!\\(1+2\\)
 
 - make a lot of JUnit tests to see where this parser is identical to *Mathematica* and where it differs
 
