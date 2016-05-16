@@ -9,7 +9,7 @@ This work is heavily based on an effort by Patrick Scheibe, who wrote an *Intell
 for the *Mathematica* language. I was very impressed by Patrick's parser and decided not only
 to fork it but to also make a stand-alone parser which doesn't depend on *IDEA* code anymore.
 
-My parser differs however from Patrick's parser. I hope to have improved some parselets, e.g.:
+My parser differs however significantly from Patrick's parser. I hope to have improved some parselets, e.g.:
 
 - **DerivativeParselet**
 
@@ -52,7 +52,6 @@ Here is some food for thought:
 
 - make a lot of JUnit tests to see where this parser is identical to *Mathematica* and where it differs
 
-- see if the lexer can support Unicode characters
 
 ##![Contact][con-image] Credits, Contact and Licensing
 
@@ -60,11 +59,7 @@ Here is some food for thought:
 
 This project would not have been possible without the pioneering work of Patrick Scheibe:
 
-- [halirutan:](https://github.com/halirutan) Provided his *IntelliJ IDEA Plugin* as open source.
-
-For valuable discussions and ideas I would like to thank Axel Kramer of Symja fame:
-
-- [axkr:](https://github.com/axkr) Author of Symja.
+- [halirutan](https://github.com/halirutan): provided his *IntelliJ IDEA Plugin* as open source.
 
 ###Contact
 
