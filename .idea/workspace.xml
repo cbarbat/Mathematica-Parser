@@ -1,97 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ed38af1-0eba-42e3-a653-e1ae4ecc4fa0" name="Default" comment="refactoring">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/Mathematica.flex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/MathematicaLexer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/_MathematicaLexer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/math.skeleton" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/CriticalParserError.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementTypes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/ParseletProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/AssociationParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/CompoundExpressionParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/DerivativeParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/FunctionCallParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/GroupParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ImplicitMultiplicationParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixCallParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixOperatorParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ListParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/MessageNameParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/NumberParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ParserUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PatternParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PostfixOperatorParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankNullSequenceParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankSequenceParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixDefaultParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixGetParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixOperatorParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PutParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SlotExpressionParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SlotParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SpanParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/StringParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SymbolParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/TagSetParselet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/package-info.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/lexer/Mathematica.flex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/lexer/MathematicaLexer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/lexer/math.skeleton" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/lexer/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/CriticalParserError.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/MathematicaElementType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/MathematicaElementTypes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/MathematicaParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/ParseletProvider.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/AssociationParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/CompoundExpressionParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/DerivativeParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/FunctionCallParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/GroupParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/ImplicitMultiplicationParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/InfixCallParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/InfixOperatorParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/InfixParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/ListParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/MessageNameParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/NumberParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/ParserUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PatternParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PostfixOperatorParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixBlankNullSequenceParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixBlankParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixBlankSequenceParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixDefaultParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixGetParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixOperatorParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixSpanParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/PutParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/SlotExpressionParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/SlotParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/SpanParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/StringParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/SymbolParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/TagSetParselet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/parser/parselets/package-info.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mathematica-Parser.iml" afterPath="$PROJECT_DIR$/Mathematica-Parser.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.m" afterPath="$PROJECT_DIR$/test.m" />
-    </list>
+    <list default="true" id="3ed38af1-0eba-42e3-a653-e1ae4ecc4fa0" name="Default" comment="" />
     <ignored path="Mathematica-Parser.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -171,7 +81,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
               <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-              <folding />
+              <folding>
+                <element signature="e#0#2335#0" expanded="false" />
+                <element signature="e#1750#1751#0" expanded="false" />
+                <element signature="e#1796#1797#0" expanded="false" />
+                <element signature="e#2296#2297#0" expanded="false" />
+                <element signature="e#2331#2332#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -229,6 +145,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="c" />
         <option value="Calin Barbat &lt;calin.barbat@web.de&gt;" />
       </list>
     </option>
@@ -486,6 +403,80 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mathematica" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathematica" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathematica" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lexer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -883,12 +874,19 @@
       <option name="project" value="LOCAL" />
       <updated>1463394685573</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactoring">
+      <created>1463505166965</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1463505166965</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -897,24 +895,24 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31935483" sideWeight="0.57977057" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.215625" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.47497392" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32795697" sideWeight="0.47497392" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31827956" sideWeight="0.4202294" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16319083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16319083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39784947" sideWeight="0.48958334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39784947" sideWeight="0.48958334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40752688" sideWeight="0.4692388" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31827956" sideWeight="0.4202294" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21827957" sideWeight="0.47497392" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1009,6 +1007,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1016,6 +1015,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#5343#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1023,6 +1025,128 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding>
+            <marker date="1463503288398" expanded="true" signature="0:1139" ph="/.../" />
+            <marker date="1463503288398" expanded="true" signature="1187:1331" ph="..." />
+            <marker date="1463503288398" expanded="false" signature="1333:1357" ph="/ALL/" />
+            <marker date="1463503288398" expanded="false" signature="1618:1627" ph="&lt;~&gt;" />
+            <marker date="1463503288398" expanded="true" signature="1670:1725" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="1755:1823" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="2880:2952" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="2975:3020" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3047:3092" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3117:3161" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3173:3251" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3276:3320" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3465:3505" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3518:3560" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3572:3618" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3630:3677" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3689:3731" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3743:3786" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3798:3842" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3854:3899" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3911:3961" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="3973:4024" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4037:4077" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4089:4128" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4140:4185" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4198:4239" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4251:4288" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4301:4346" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4358:4409" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4423:4460" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4474:4522" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4534:4574" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4586:4631" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4643:4681" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4693:4739" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4752:4802" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4814:4859" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4871:4914" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4926:4967" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="4981:5045" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5057:5114" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5126:5183" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5196:5237" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5251:5291" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5304:5346" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5358:5397" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5409:5450" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5462:5506" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5518:5565" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5578:5627" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5639:5677" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5689:5730" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5742:5782" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5794:5841" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5853:5895" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5907:5950" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="5963:6006" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6018:6056" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6068:6111" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6123:6162" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6174:6232" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6244:6283" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6295:6335" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6347:6386" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6402:6447" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6460:6511" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6523:6567" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6580:6623" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6636:6675" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6688:6735" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6910:6962" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="6986:7025" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7038:7080" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7092:7131" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7143:7181" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7193:7236" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7248:7294" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7306:7345" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7362:7415" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7430:7478" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7493:7534" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7549:7588" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7601:7638" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7662:7709" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7726:7764" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7791:7841" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7857:7904" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7919:7969" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="7985:8021" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8036:8081" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8096:8133" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8148:8190" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8206:8250" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8266:8310" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8326:8373" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8425:8488" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8523:8556" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8608:8671" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8706:8739" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8808:8883" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="8926:9024" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9078:9125" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9194:9269" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9311:9409" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9463:9510" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9563:9629" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9665:9713" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9749:9805" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9841:9889" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="9925:9973" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10009:10057" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10093:10141" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10192:10263" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10296:10345" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10378:10426" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10459:10510" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10543:10602" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10633:10682" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10711:10758" ph="{...}" />
+            <marker date="1463503288398" expanded="true" signature="10794:10841" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1030,6 +1154,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,6 +1162,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#2086#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1044,6 +1173,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#2559#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,6 +1184,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#1423#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1058,6 +1194,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#1461#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,6 +1228,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1131,7 +1271,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="e#0#2335#0" expanded="false" />
+            <element signature="e#1750#1751#0" expanded="false" />
+            <element signature="e#1796#1797#0" expanded="false" />
+            <element signature="e#2296#2297#0" expanded="false" />
+            <element signature="e#2331#2332#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
