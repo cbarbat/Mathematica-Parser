@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--suppress ALL -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>de.cbarbat.mathematica</groupId>
     <artifactId>Mathematica-Parser</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Mathematica Parser</name>
-    <description>Aims to be as near to Mathematica as possible</description>
+    <description>Aims to be as near to Mathematica as possible.</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,7 +17,7 @@
 
     <build>
         <finalName>Mathematica-Parser</finalName>
-        <sourceDirectory>src/</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>de.jflex</groupId>
@@ -32,10 +32,10 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.basedir}/src</outputDirectory>
-                            <skeleton>${project.basedir}/src/main/java/lexer/math.skeleton</skeleton>
+                            <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                            <skeleton>${project.basedir}/src/main/java/de/cbarbat/mathematica/lexer/math.skeleton</skeleton>
                             <lexDefinitions>
-                                <lexDefinition>${project.basedir}/src/main/java/lexer</lexDefinition>
+                                <lexDefinition>${project.basedir}/src/main/java/de/cbarbat/mathematica/lexer</lexDefinition>
                             </lexDefinitions>
                             <verbose>true</verbose>
                         </configuration>
@@ -104,7 +104,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>main.java.Main</mainClass>
+                            <mainClass>de.cbarbat.mathematica.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
