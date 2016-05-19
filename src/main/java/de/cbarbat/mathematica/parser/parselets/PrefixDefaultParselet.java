@@ -38,7 +38,7 @@ public class PrefixDefaultParselet implements PrefixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
 /*
         MathematicaLexer.Token token = parser.getToken(); //_.
         parser.advanceLexer();
@@ -49,8 +49,8 @@ public class PrefixDefaultParselet implements PrefixParselet {
         parser.advanceLexer();
         MathematicaLexer.Token token1 = new MathematicaLexer.Token(MathematicaElementTypes.BLANK, "_", token2.start, token2.start+1); //_
         token2.start++; //.
-        MathematicaParser.AST subtree = MathematicaParser.result(token1, MathematicaElementTypes.BLANK_EXPRESSION, true);
-        MathematicaParser.AST    tree = MathematicaParser.result(token2, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
+        MathematicaParser.ASTNode subtree = MathematicaParser.result(token1, MathematicaElementTypes.BLANK_EXPRESSION, true);
+        MathematicaParser.ASTNode    tree = MathematicaParser.result(token2, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
         tree.children.add(subtree);
         return tree;
     }

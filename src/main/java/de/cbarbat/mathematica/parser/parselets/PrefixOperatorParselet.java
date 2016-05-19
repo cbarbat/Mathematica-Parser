@@ -41,12 +41,12 @@ public class PrefixOperatorParselet implements PrefixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         MathematicaLexer.Token token = parser.getToken();
         parser.advanceLexer();
         MathematicaElementType tokenType = ParseletProvider.getPrefixElement(this);
-        MathematicaParser.AST result = parser.parseExpression(myPrecedence);
-        MathematicaParser.AST tree = MathematicaParser.result(token, tokenType, result.isParsed());
+        MathematicaParser.ASTNode result = parser.parseExpression(myPrecedence);
+        MathematicaParser.ASTNode tree = MathematicaParser.result(token, tokenType, result.isParsed());
         tree.children.add(result);
         return tree;
     }

@@ -45,7 +45,7 @@
 //
 //  // Parses things like expr1;;expr2, expr0;; ;;expr1 or expr0;;expr1;;expr2.
 //  @Override
-//  public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+//  public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
 //
 //    boolean skipped = false;
 //

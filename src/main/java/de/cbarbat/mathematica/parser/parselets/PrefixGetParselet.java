@@ -40,13 +40,13 @@ public class PrefixGetParselet implements PrefixParselet {
         this.myPrecedence = precedence;
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         final MathematicaLexer.Token token = parser.getToken();
         final MathematicaElementType tokenType = MathematicaElementTypes.GET_PREFIX;
         parser.advanceLexer();
         if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER) || parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_BEGIN)) {
-            final MathematicaParser.AST right = parser.parseExpression(myPrecedence);
-            MathematicaParser.AST tree = MathematicaParser.result(token, tokenType, right.isParsed());
+            final MathematicaParser.ASTNode right = parser.parseExpression(myPrecedence);
+            MathematicaParser.ASTNode tree = MathematicaParser.result(token, tokenType, right.isParsed());
             tree.children.add(right);
             return tree;
         } else {

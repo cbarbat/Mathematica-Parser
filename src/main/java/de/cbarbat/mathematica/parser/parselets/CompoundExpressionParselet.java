@@ -44,10 +44,10 @@ public class CompoundExpressionParselet implements InfixParselet {
         return myPrecedence;
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         if (!left.isValid()) return MathematicaParser.notParsed();
 
-        ArrayList<MathematicaParser.AST> sequence = new ArrayList<>();
+        ArrayList<MathematicaParser.ASTNode> sequence = new ArrayList<>();
         sequence.add(left);
         MathematicaLexer.Token token = parser.getToken();
         MathematicaElementType tokenType = MathematicaElementTypes.COMPOUND_EXPRESSION_EXPRESSION;
@@ -56,7 +56,7 @@ public class CompoundExpressionParselet implements InfixParselet {
         boolean parsed = true;
 
         while (true) {
-            MathematicaParser.AST tree = parser.parseExpression(myPrecedence);
+            MathematicaParser.ASTNode tree = parser.parseExpression(myPrecedence);
             if (!tree.isValid()) break;
             parsed &= tree.isParsed();
             sequence.add(tree);
@@ -64,7 +64,7 @@ public class CompoundExpressionParselet implements InfixParselet {
             else break;
         }
 
-        MathematicaParser.AST result = MathematicaParser.result(token, tokenType, parsed);
+        MathematicaParser.ASTNode result = MathematicaParser.result(token, tokenType, parsed);
         result.children = sequence;
         return result;
     }

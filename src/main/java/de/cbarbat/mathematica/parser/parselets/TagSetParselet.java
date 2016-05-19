@@ -42,7 +42,7 @@ public class TagSetParselet implements InfixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         MathematicaLexer.Token token1 = parser.getToken();
         if (parser.matchesToken(MathematicaElementTypes.TAG_SET)) {
             parser.advanceLexer();
@@ -52,7 +52,7 @@ public class TagSetParselet implements InfixParselet {
         // In the next line we parse expr1 of expr0/:expr1 and we reduce the precedence by one because it is
         // right associative. Using SetDelayed (:=) which has the same precedence the following expression:
         // a /: b := c := d is then correctly parsed as a /: b := (c := d)
-        MathematicaParser.AST expr1 = parser.parseExpression(myPrecedence - 1);
+        MathematicaParser.ASTNode expr1 = parser.parseExpression(myPrecedence - 1);
 
         if (!expr1.isValid()) {
             parser.error("Missing 'expr' between '/\\:' and '\\:\\='");
@@ -77,7 +77,7 @@ public class TagSetParselet implements InfixParselet {
             parser.error("Missing '\\:\\=','\\=' or '\\=.' needed to complete TagSet");
             return MathematicaParser.result(token1, MathematicaElementTypes.TAG_SET_EXPRESSION, false);
         }
-        MathematicaParser.AST tree = MathematicaParser.result(token, treeType, expr1.isParsed());
+        MathematicaParser.ASTNode tree = MathematicaParser.result(token, treeType, expr1.isParsed());
         tree.children = expr1.children;
         tree.children.add(0, left);
         return tree;

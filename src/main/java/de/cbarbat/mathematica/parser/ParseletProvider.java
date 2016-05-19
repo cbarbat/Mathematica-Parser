@@ -31,7 +31,7 @@ import de.cbarbat.mathematica.parser.parselets.*;
  * operator properties (precedences, parselets, Psi-tree elements) which is initialized only once. This class is
  * basically the center of the parser because it provides the {@link MathematicaParser} with all the small parselets
  * which finally do the work of parsing specific expressions. <p>Therefore, I first need to select the appropriate
- * parselet for a lexer token. This parselet parses then the specific expression and marks the node in the AST. </p>
+ * parselet for a lexer token. This parselet parses then the specific expression and marks the node in the ASTNode. </p>
  *
  * @author patrick (3/27/13)
  */
@@ -196,11 +196,11 @@ public class ParseletProvider {
     }
 
     /**
-     * Provides the parselet with the element type of the node for the AST. When an expression was parsed with a specific
-     * {@link InfixParselet} the node in the AST is then the {@link MathematicaElementType} which is returned by this method. E.g.
+     * Provides the parselet with the element type of the node for the ASTNode. When an expression was parsed with a specific
+     * {@link InfixParselet} the node in the ASTNode is then the {@link MathematicaElementType} which is returned by this method. E.g.
      * When a PLUS token arises in the lexer token stream first the infix-parselet of the PLUS token is extracted and it
      * parses the left and right operand. Afterwards it marks the whole
-     * expression a+b in the AST tree as being a node of type returned by this method.
+     * expression a+b in the ASTNode tree as being a node of type returned by this method.
      *
      * @param parselet The parselet for which the node type is wanted
      * @return The node type.
@@ -217,7 +217,7 @@ public class ParseletProvider {
      * Please see {@link #getInfixElement(InfixParselet)}
      *
      * @param parselet The parselet for which the type is wanted
-     * @return The element of the node in the AST tree
+     * @return The element of the node in the ASTNode tree
      */
     public static MathematicaElementType getPrefixElement(PrefixParselet parselet) {
         MathematicaElementType elm = PREFIX_TO_ELEMENT.get(parselet);

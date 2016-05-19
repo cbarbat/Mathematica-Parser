@@ -42,7 +42,7 @@ public class SlotParselet implements PrefixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         final MathematicaLexer.Token token = parser.getToken();
         final MathematicaElementType tokenType = token.type;
         if (SLOTS.contains(tokenType)) {

@@ -29,9 +29,9 @@ import java.util.List;
  * <p> This interface provides token types which are used by the Lexer and later by the parser. Some {@link List<MathematicaElementType>}'s
  * are defined which are used for the basic highlighter. Every {@link List<MathematicaElementType>} is then used to define a group of tokens
  * which are highlighted in the same color. Check ... . As a last part this interface
- * </p> <p> is used to define the {@link MathematicaElementType}'s which are used to _mark the AST during parsing. Since I use a
+ * </p> <p> is used to define the {@link MathematicaElementType}'s which are used to _mark the ASTNode during parsing. Since I use a
  * Pratt parser where every token gets its own small parser (called parselet) most lexer token types have one or more
- * corresponding parser element types which are then used as nodes in the AST tree. </p>
+ * corresponding parser element types which are then used as nodes in the ASTNode tree. </p>
  *
  * @author patrick (12/27/12)
  */

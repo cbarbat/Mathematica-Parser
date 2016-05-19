@@ -44,18 +44,18 @@ public class InfixCallParselet implements InfixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         MathematicaLexer.Token token = parser.getToken();
         parser.advanceLexer();
-        MathematicaParser.AST operator = parser.parseExpression(myPrecedence);
+        MathematicaParser.ASTNode operator = parser.parseExpression(myPrecedence);
 
         if (parser.matchesToken(MathematicaElementTypes.INFIX_CALL)) {
             parser.advanceLexer();
-            MathematicaParser.AST operand2 = parser.parseExpression(myPrecedence);
+            MathematicaParser.ASTNode operand2 = parser.parseExpression(myPrecedence);
             if (!operand2.isParsed()) {
                 parser.error("Argument arg2 missing in 'arg1 ~ op ~ arg2'");
             }
-            MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.INFIX_CALL_EXPRESSION, operator.isParsed() && operand2.isParsed());
+            MathematicaParser.ASTNode tree = MathematicaParser.result(token, MathematicaElementTypes.INFIX_CALL_EXPRESSION, operator.isParsed() && operand2.isParsed());
             tree.children.add(operator);
             tree.children.add(left);
             tree.children.add(operand2);

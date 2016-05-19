@@ -43,11 +43,11 @@ public class PostfixOperatorParselet implements InfixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         MathematicaLexer.Token token = parser.getToken();
         parser.advanceLexer();
         MathematicaElementType tokenType = getInfixElement(this);
-        MathematicaParser.AST tree = MathematicaParser.result(token, tokenType, left.isParsed());
+        MathematicaParser.ASTNode tree = MathematicaParser.result(token, tokenType, left.isParsed());
         tree.children.add(left);
         return tree;
     }

@@ -42,7 +42,7 @@ public class SymbolParselet implements PrefixParselet {
     public SymbolParselet() {
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         MathematicaElementType finalExpressionType;
         MathematicaLexer.Token token = parser.getToken();
         if (token.type.equals(IDENTIFIER)) {
@@ -55,9 +55,9 @@ public class SymbolParselet implements PrefixParselet {
                                 parser.matchesToken(MathematicaElementTypes.IDENTIFIER, MathematicaElementTypes.DEFAULT)
                 )) {
                     parser.advanceLexer();
-                    MathematicaParser.AST left = MathematicaParser.result(token, finalExpressionType, true);
-                    MathematicaParser.AST right = parser.parseExpression(76);
-                    MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.PATTERN_EXPRESSION, right.isParsed());
+                    MathematicaParser.ASTNode left = MathematicaParser.result(token, finalExpressionType, true);
+                    MathematicaParser.ASTNode right = parser.parseExpression(76);
+                    MathematicaParser.ASTNode tree = MathematicaParser.result(token, MathematicaElementTypes.PATTERN_EXPRESSION, right.isParsed());
                     tree.children.add(left);
                     if (!parser.optional) {
                         tree.children.add(right);
@@ -66,7 +66,7 @@ public class SymbolParselet implements PrefixParselet {
                         tree.children.add(right.children.get(0));
                         parser.optional = false;
                         token = parser.getPrevToken();
-                        MathematicaParser.AST tree2 = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
+                        MathematicaParser.ASTNode tree2 = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);
                         tree2.children.add(tree);
                         return tree2;
                     }

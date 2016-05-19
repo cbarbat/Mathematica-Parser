@@ -36,7 +36,7 @@ public class GroupParselet implements PrefixParselet {
     public GroupParselet() {
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         // should never happen
         if (!parser.getToken().type.equals(MathematicaElementTypes.LEFT_PAR)) {
             return MathematicaParser.notParsed();
@@ -49,7 +49,7 @@ public class GroupParselet implements PrefixParselet {
             return MathematicaParser.notParsed();
         }
 
-        MathematicaParser.AST result = parser.parseExpression();
+        MathematicaParser.ASTNode result = parser.parseExpression();
         if (parser.matchesToken(MathematicaElementTypes.RIGHT_PAR)) {
             parser.myParDepth--;
             parser.advanceLexer();

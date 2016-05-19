@@ -44,16 +44,16 @@ public class InfixOperatorParselet implements InfixParselet {
         this.myRightAssociative = rightAssociative;
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         if (!left.isValid()) return MathematicaParser.notParsed();
 
-        MathematicaParser.AST tree = null;
+        MathematicaParser.ASTNode tree = null;
         MathematicaLexer.Token token = parser.getToken();
         MathematicaElementType tokenType = ParseletProvider.getInfixElement(this);
 
         parser.advanceLexer();
 
-        MathematicaParser.AST right = parser.parseExpression(myPrecedence - (myRightAssociative ? 1 : 0));
+        MathematicaParser.ASTNode right = parser.parseExpression(myPrecedence - (myRightAssociative ? 1 : 0));
         if (right != null && right.isParsed()) {
             tree = MathematicaParser.result(token, tokenType, true);
             tree.children.add(left);

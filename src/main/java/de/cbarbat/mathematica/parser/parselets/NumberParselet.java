@@ -39,7 +39,7 @@ public class NumberParselet implements PrefixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         MathematicaLexer.Token token = parser.getToken();
         parser.advanceLexer();
         return MathematicaParser.result(token, MathematicaElementTypes.NUMBER_EXPRESSION, true);

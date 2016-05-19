@@ -32,6 +32,6 @@ import de.cbarbat.mathematica.parser.MathematicaParser;
  * @author patrick (3/27/13)
  */
 public interface PrefixParselet {
-    MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError;
+    MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError;
 }
 

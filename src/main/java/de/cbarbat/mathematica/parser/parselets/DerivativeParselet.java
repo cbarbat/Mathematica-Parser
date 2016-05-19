@@ -45,7 +45,7 @@ public class DerivativeParselet implements InfixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         Integer repetitions = 0;
 
         MathematicaLexer.Token token = parser.getToken();
@@ -55,8 +55,8 @@ public class DerivativeParselet implements InfixParselet {
         }
 
         MathematicaLexer.Token rtoken = new MathematicaLexer.Token(MathematicaElementTypes.NUMBER_EXPRESSION, repetitions.toString(), 0, repetitions.toString().length());
-        MathematicaParser.AST right = new MathematicaParser.AST(rtoken, rtoken.type, true);
-        MathematicaParser.AST tree = MathematicaParser.result(token, DERIVATIVE_EXPRESSION, true);
+        MathematicaParser.ASTNode right = new MathematicaParser.ASTNode(rtoken, rtoken.type, true);
+        MathematicaParser.ASTNode tree = MathematicaParser.result(token, DERIVATIVE_EXPRESSION, true);
         tree.children.add(right);
         tree.children.add(left);
         return tree;

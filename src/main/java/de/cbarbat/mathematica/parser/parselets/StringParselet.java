@@ -44,7 +44,7 @@ public class StringParselet implements PrefixParselet {
      * @return Information about the success of the parsing.
      */
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         boolean parsedQ = true;
         MathematicaLexer.Token token = parser.getToken(); // opening " character
         parser.advanceLexer();

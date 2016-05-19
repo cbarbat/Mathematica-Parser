@@ -40,12 +40,12 @@ public class PatternParselet implements InfixParselet {
         this.myPrecedence = precedence;
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         if (!left.isValid()) return MathematicaParser.notParsed();
 
         MathematicaLexer.Token token = parser.getToken();
         parser.advanceLexer();
-        MathematicaParser.AST right = parser.parseExpression(myPrecedence);
+        MathematicaParser.ASTNode right = parser.parseExpression(myPrecedence);
 
         MathematicaElementType expressionType = left.getToken().equals(MathematicaElementTypes.SYMBOL_EXPRESSION) ?
                 MathematicaElementTypes.PATTERN_EXPRESSION : MathematicaElementTypes.OPTIONAL_EXPRESSION;
@@ -54,7 +54,7 @@ public class PatternParselet implements InfixParselet {
             parser.error("Could not parse pattern or optional argument expression");
         }
 
-        MathematicaParser.AST tree = MathematicaParser.result(token, expressionType, right.isParsed());
+        MathematicaParser.ASTNode tree = MathematicaParser.result(token, expressionType, right.isParsed());
         tree.children.add(left);
         tree.children.add(right);
         return tree;

@@ -39,7 +39,7 @@ public class AssociationParselet implements PrefixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         boolean parsed = true;
         MathematicaLexer.Token token = parser.getToken();
 
@@ -49,7 +49,7 @@ public class AssociationParselet implements PrefixParselet {
             throw new CriticalParserError("Association token does not start with '<|'");
         }
 
-        ArrayList<MathematicaParser.AST> seqResult = ParserUtil.parseSequence(parser, RIGHT_ASSOCIATION);
+        ArrayList<MathematicaParser.ASTNode> seqResult = ParserUtil.parseSequence(parser, RIGHT_ASSOCIATION);
 
         if (parser.matchesToken(RIGHT_ASSOCIATION)) {
             parser.advanceLexer();
@@ -58,7 +58,7 @@ public class AssociationParselet implements PrefixParselet {
             parsed = false;
         }
 
-        MathematicaParser.AST tree = MathematicaParser.result(token, ASSOCIATION_EXPRESSION, parsed && seqResult != null);
+        MathematicaParser.ASTNode tree = MathematicaParser.result(token, ASSOCIATION_EXPRESSION, parsed && seqResult != null);
         tree.children = seqResult;
         return tree;
     }

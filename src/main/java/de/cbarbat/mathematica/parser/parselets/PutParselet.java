@@ -38,15 +38,15 @@ public class PutParselet implements InfixParselet {
         this.myPrecedence = precedence;
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         if (!left.isValid()) return MathematicaParser.notParsed();
 
         final MathematicaLexer.Token token = parser.getToken();
         final MathematicaElementType type = token.type.equals(MathematicaElementTypes.PUT) ? MathematicaElementTypes.PUT_EXPRESSION : MathematicaElementTypes.PUT_APPEND_EXPRESSION;
         parser.advanceLexer();
         if (parser.matchesToken(MathematicaElementTypes.STRINGIFIED_IDENTIFIER) || parser.matchesToken(MathematicaElementTypes.STRING_LITERAL_BEGIN)) {
-            final MathematicaParser.AST right = parser.parseExpression(myPrecedence);
-            MathematicaParser.AST tree = MathematicaParser.result(token, type, right.isParsed());
+            final MathematicaParser.ASTNode right = parser.parseExpression(myPrecedence);
+            MathematicaParser.ASTNode tree = MathematicaParser.result(token, type, right.isParsed());
             tree.children.add(left);
             tree.children.add(right);
             return tree;

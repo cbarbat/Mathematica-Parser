@@ -50,9 +50,9 @@ final class ParserUtil {
      * @return The parsing result which is true iff all sub-expressions were successfully parsed.
      * @throws CriticalParserError
      */
-    static ArrayList<MathematicaParser.AST> parseSequence(MathematicaParser parser, MathematicaElementType rightDel) throws CriticalParserError {
-        MathematicaParser.AST expression;
-        ArrayList<MathematicaParser.AST> sequence = new ArrayList<>();
+    static ArrayList<MathematicaParser.ASTNode> parseSequence(MathematicaParser parser, MathematicaElementType rightDel) throws CriticalParserError {
+        MathematicaParser.ASTNode expression;
+        ArrayList<MathematicaParser.ASTNode> sequence = new ArrayList<>();
         boolean sequenceParsed = true;
 
         // The following is not correct regarding the syntax of the Mathematica language because f[a,,b] is equivalent to

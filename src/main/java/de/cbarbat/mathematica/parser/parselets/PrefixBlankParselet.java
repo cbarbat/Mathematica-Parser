@@ -38,13 +38,13 @@ public class PrefixBlankParselet implements PrefixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         parser.optional = false;
         parser.pattern = false;
         MathematicaLexer.Token token = parser.getToken(); //_
         MathematicaElementType tokenType = MathematicaElementTypes.BLANK_EXPRESSION;
-        MathematicaParser.AST result;
-        MathematicaParser.AST tree = null;
+        MathematicaParser.ASTNode result;
+        MathematicaParser.ASTNode tree = null;
         if (!parser.isNextWhitespace()) {
             parser.advanceLexer();
             if (parser.matchesToken(MathematicaElementTypes.IDENTIFIER)) {
@@ -55,7 +55,7 @@ public class PrefixBlankParselet implements PrefixParselet {
                     tree.children.add(result);
                 }
             } else if (parser.matchesToken(MathematicaElementTypes.POINT)) {
-                MathematicaParser.AST subtree = MathematicaParser.result(token, tokenType, true);
+                MathematicaParser.ASTNode subtree = MathematicaParser.result(token, tokenType, true);
                 parser.optional = true;
                 token = parser.getToken();
                 tree = MathematicaParser.result(token, MathematicaElementTypes.OPTIONAL_EXPRESSION, true);

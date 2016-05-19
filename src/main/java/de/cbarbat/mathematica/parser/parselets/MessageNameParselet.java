@@ -43,7 +43,7 @@ public class MessageNameParselet implements InfixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
 
         if (left.token.type != MathematicaElementTypes.SYMBOL_EXPRESSION) {
             parser.error("MessageName expects Symbol here");
@@ -51,12 +51,12 @@ public class MessageNameParselet implements InfixParselet {
             return left;
         }
 
-        MathematicaParser.AST tree;
-        ArrayList<MathematicaParser.AST> sequence = new ArrayList<>();
+        MathematicaParser.ASTNode tree;
+        ArrayList<MathematicaParser.ASTNode> sequence = new ArrayList<>();
         sequence.add(left);
 
         parser.advanceLexer();
-        MathematicaParser.AST result = parser.parseExpression(myPrecedence);
+        MathematicaParser.ASTNode result = parser.parseExpression(myPrecedence);
 
         if (result.isParsed()) {
             // Check whether we have a symbol or a string in usage message

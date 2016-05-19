@@ -27,7 +27,7 @@ package de.cbarbat.mathematica.parser;
  *
  * @author patrick (4/7/13)
  */
-public class CriticalParserError extends Throwable {
+public class CriticalParserError extends RuntimeException {
     public CriticalParserError(String s) {
         super(s);
     }

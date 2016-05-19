@@ -40,7 +40,7 @@ public class ListParselet implements PrefixParselet {
     public ListParselet() {
     }
 
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         boolean parsed = true;
         MathematicaLexer.Token token = parser.getToken();
 
@@ -51,7 +51,7 @@ public class ListParselet implements PrefixParselet {
             throw new CriticalParserError("List parselet does not start with '{'");
         }
 
-        ArrayList<MathematicaParser.AST> seqResult = ParserUtil.parseSequence(parser, RIGHT_BRACE);
+        ArrayList<MathematicaParser.ASTNode> seqResult = ParserUtil.parseSequence(parser, RIGHT_BRACE);
 
         if (parser.matchesToken(RIGHT_BRACE)) {
             parser.myBraceDepth--;
@@ -61,7 +61,7 @@ public class ListParselet implements PrefixParselet {
             parsed = false;
         }
 
-        MathematicaParser.AST tree = MathematicaParser.result(token, LIST_EXPRESSION, parsed && seqResult != null);
+        MathematicaParser.ASTNode tree = MathematicaParser.result(token, LIST_EXPRESSION, parsed && seqResult != null);
         tree.children = seqResult;
         return tree;
     }

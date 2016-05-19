@@ -39,14 +39,14 @@ public class ImplicitMultiplicationParselet implements InfixParselet {
     private static final int PRECEDENCE = 42;
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         if (!left.isValid()) return MathematicaParser.notParsed();
-        MathematicaParser.AST tree = null;
+        MathematicaParser.ASTNode tree = null;
 
-        MathematicaParser.AST right = parser.parseExpression(PRECEDENCE);
+        MathematicaParser.ASTNode right = parser.parseExpression(PRECEDENCE);
         if (right.isParsed()) {
             MathematicaLexer.Token token = new MathematicaLexer.Token(MathematicaElementTypes.TIMES, " ", right.token.end + 1,  right.token.end + 2);
-            tree = new MathematicaParser.AST(token, MathematicaElementTypes.TIMES_EXPRESSION, true);
+            tree = new MathematicaParser.ASTNode(token, MathematicaElementTypes.TIMES_EXPRESSION, true);
             tree.children.add(left);
             tree.children.add(right);
         } else {

@@ -37,7 +37,7 @@ public class SlotExpressionParselet implements PrefixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         
         final MathematicaLexer.Token token = parser.getToken();
         if (token.type.equals(MathematicaElementTypes.ASSOCIATION_SLOT)) {

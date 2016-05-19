@@ -44,7 +44,7 @@ public class FunctionCallParselet implements InfixParselet {
     }
 
     @Override
-    public MathematicaParser.AST parse(MathematicaParser parser, MathematicaParser.AST left) throws CriticalParserError {
+    public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
         // should never happen
         if ((!parser.getTokenType().equals(MathematicaElementTypes.LEFT_BRACKET)) && !left.isValid()) {
             return MathematicaParser.notParsed();
@@ -73,7 +73,7 @@ public class FunctionCallParselet implements InfixParselet {
             parser.myBracketDepth++;
         }
 
-        ArrayList<MathematicaParser.AST> sequence = null;
+        ArrayList<MathematicaParser.ASTNode> sequence = null;
         boolean hasArgs = false;
         if (!parser.matchesToken(MathematicaElementTypes.RIGHT_BRACKET)) {
             sequence = ParserUtil.parseSequence(parser, MathematicaElementTypes.RIGHT_BRACKET);
@@ -90,7 +90,7 @@ public class FunctionCallParselet implements InfixParselet {
                 parser.advanceLexer();
                 parser.myBracketDepth--;
 
-                MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.PART_EXPRESSION, hasArgs);
+                MathematicaParser.ASTNode tree = MathematicaParser.result(token, MathematicaElementTypes.PART_EXPRESSION, hasArgs);
                 if (hasArgs) tree.children = sequence;
                 tree.children.add(0, left);
                 return tree;
@@ -104,7 +104,7 @@ public class FunctionCallParselet implements InfixParselet {
                 parser.advanceLexer();
                 parser.myBracketDepth--;
 
-                MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.SLOT_EXPRESSION, true);
+                MathematicaParser.ASTNode tree = MathematicaParser.result(token, MathematicaElementTypes.SLOT_EXPRESSION, true);
                 if (hasArgs) tree.children = sequence;
                 tree.children.add(0, left);
                 return tree;
@@ -112,7 +112,7 @@ public class FunctionCallParselet implements InfixParselet {
                 parser.advanceLexer();
                 parser.myBracketDepth--;
 
-                MathematicaParser.AST tree = MathematicaParser.result(token, MathematicaElementTypes.FUNCTION_CALL_EXPRESSION, true);
+                MathematicaParser.ASTNode tree = MathematicaParser.result(token, MathematicaElementTypes.FUNCTION_CALL_EXPRESSION, true);
                 if (hasArgs) tree.children = sequence;
                 tree.children.add(0, left);
                 return tree;

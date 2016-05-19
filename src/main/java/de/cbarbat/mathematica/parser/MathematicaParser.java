@@ -64,23 +64,23 @@ public class MathematicaParser {
      * recognizing the operator <code >+</code>, parsing <code >expr2</code> and combining everything into a new parse
      * node.
      * <p/>
-     * Since IDEA uses markers to mark the sequential code into a tree-structure I use this {@link AST} which contains
+     * Since IDEA uses markers to mark the sequential code into a tree-structure I use this {@link ASTNode} which contains
      * additionally the {@link MathematicaElementType} of the last expression and whether the previous expression was parsed.
      *
      * @param token   The token type of the expression which was parsed, e.g. FUNCTION_CALL_EXPRESSION
      * @param parsedQ Whether the parsing of the expression was successful
      * @return The Result object with the given parsing information.
      */
-    public static AST result(MathematicaLexer.Token token, MathematicaElementType type, boolean parsedQ) {
+    public static ASTNode result(MathematicaLexer.Token token, MathematicaElementType type, boolean parsedQ) {
         token.type = type;
-        return new AST(token, type, parsedQ);
+        return new ASTNode(token, type, parsedQ);
     }
 
     /**
      * This is the return value of a parser when errors happened.
      */
-    public static AST notParsed() {
-        return new AST(null, null, false);
+    public static ASTNode notParsed() {
+        return new ASTNode(null, null, false);
     }
 
     /**
@@ -90,7 +90,7 @@ public class MathematicaParser {
         myLexer.setImportantLineBreakHandler(myImportantLinebreakHandler);
         try {
             while (!myLexer.eof()) {
-                AST expr = parseExpression();
+                ASTNode expr = parseExpression();
                 if (!expr.isParsed()) {
                     error("The last expression could not be parsed correctly.");
                     myLexer.advanceLexer();
@@ -106,11 +106,11 @@ public class MathematicaParser {
         }
     }
 
-    public AST parseExpression() throws CriticalParserError {
+    public ASTNode parseExpression() throws CriticalParserError {
         return parseExpression(0);
     }
 
-    public AST parseExpression(int precedence) throws CriticalParserError {
+    public ASTNode parseExpression(int precedence) throws CriticalParserError {
         if (myLexer.eof()) return notParsed();
 
         if (myRecursionDepth > MAX_RECURSION_DEPTH) {
@@ -128,7 +128,7 @@ public class MathematicaParser {
         }
 
         increaseRecursionDepth();
-        AST left = prefix.parse(this);
+        ASTNode left = prefix.parse(this);
 
         while (left.isParsed()) {
             tokenType = getTokenType();
@@ -244,13 +244,13 @@ public class MathematicaParser {
 
     }
 
-    public static class AST {
+    public static class ASTNode {
         public final MathematicaLexer.Token token;
         public final MathematicaElementType type;
-        public ArrayList<AST> children;
+        public ArrayList<ASTNode> children;
         public boolean parsed;
 
-        public AST(MathematicaLexer.Token token, MathematicaElementType type, boolean parsed) {
+        public ASTNode(MathematicaLexer.Token token, MathematicaElementType type, boolean parsed) {
             this.token = token;
             this.type = type;
             this.children = new ArrayList<>();
