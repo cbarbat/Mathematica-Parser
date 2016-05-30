@@ -54,9 +54,9 @@ newest version of the code.
 
 Here is some food for thought:
 
-- the two **Span** parselets are missing/commented out and must still be implemented
-
 - add support for boxes syntax like \\!\\(1+2\\)
+
+- see what else is missing and implement it
 
 - make a lot of JUnit tests to see where this parser is identical to *Mathematica* and where it differs
 

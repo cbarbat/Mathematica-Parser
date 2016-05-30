@@ -111,8 +111,8 @@ public class ParseletProvider {
         infixLeft(MathematicaElementTypes.PLUS, MathematicaElementTypes.PLUS_EXPRESSION, 40); // Plus(+)
         infixLeft(MathematicaElementTypes.MINUS, MathematicaElementTypes.MINUS_EXPRESSION, 40); // Minus(-)
 
-//        register(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new SpanParselet(38)); // Span(;;)
-//        register(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new PrefixSpanParselet(38)); // Span(;;)
+        register(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new SpanParselet(38)); // Span(;;)
+        register(MathematicaElementTypes.SPAN, MathematicaElementTypes.SPAN_EXPRESSION, new PrefixSpanParselet(38)); // Span(;;)
 
         infixLeft(MathematicaElementTypes.UNDIRECTED_EDGE, MathematicaElementTypes.UNDIRECTED_EDGE_EXPRESSION, 37); // UndirectedEdge(<->)
 
@@ -181,7 +181,7 @@ public class ParseletProvider {
      * @param token The token for which the parselet is wanted
      * @return The {@link PrefixParselet} if available for this token and {@code null} otherwise.
      */
-    static PrefixParselet getPrefixParselet(MathematicaElementType token) {
+    public static PrefixParselet getPrefixParselet(MathematicaElementType token) {
         return ELEMENT_TO_PREFIX.get(token);
     }
 

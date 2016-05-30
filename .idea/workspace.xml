@@ -1,41 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ed38af1-0eba-42e3-a653-e1ae4ecc4fa0" name="Default" comment="renamed AST to ASTNode">
+    <list default="true" id="3ed38af1-0eba-42e3-a653-e1ae4ecc4fa0" name="Default" comment="implemented Span(;;) operator">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/CriticalParserError.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/CriticalParserError.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementTypes.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementTypes.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/ParseletProvider.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/ParseletProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/AssociationParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/AssociationParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/CompoundExpressionParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/CompoundExpressionParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/DerivativeParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/DerivativeParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/FunctionCallParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/FunctionCallParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/GroupParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/GroupParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ImplicitMultiplicationParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ImplicitMultiplicationParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixCallParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixCallParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixOperatorParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixOperatorParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/InfixParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ListParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ListParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/MessageNameParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/MessageNameParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/NumberParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/NumberParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ParserUtil.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/ParserUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PatternParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PatternParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PostfixOperatorParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PostfixOperatorParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankNullSequenceParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankNullSequenceParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankSequenceParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixBlankSequenceParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixDefaultParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixDefaultParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixGetParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixGetParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixOperatorParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixOperatorParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PutParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PutParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SlotExpressionParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SlotExpressionParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SlotParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SlotParselet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SpanParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SpanParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/StringParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/StringParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SymbolParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SymbolParselet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/TagSetParselet.java" afterPath="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/TagSetParselet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.m" afterPath="$PROJECT_DIR$/test.m" />
     </list>
     <ignored path="Mathematica-Parser.iws" />
@@ -62,8 +35,31 @@
       <file leaf-file-name="test.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+            <state relative-caret-position="144">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="180">
+                <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -82,8 +78,8 @@
       <file leaf-file-name="MathematicaElementTypes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementTypes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="31" column="95" selection-start-line="31" selection-start-column="95" selection-end-line="31" selection-end-column="95" />
+            <state relative-caret-position="198">
+              <caret line="32" column="95" selection-start-line="32" selection-start-column="95" selection-end-line="32" selection-end-column="95" />
               <folding />
             </state>
           </provider>
@@ -92,8 +88,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16470">
-              <caret line="915" column="38" selection-start-line="915" selection-start-column="38" selection-end-line="915" selection-end-column="38" />
+            <state relative-caret-position="14130">
+              <caret line="785" column="38" selection-start-line="785" selection-start-column="38" selection-end-line="785" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -102,8 +98,8 @@
       <file leaf-file-name="MathematicaParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+            <state relative-caret-position="1170">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -112,8 +108,8 @@
       <file leaf-file-name="PrefixSpanParselet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="54" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state relative-caret-position="414">
+              <caret line="54" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -122,8 +118,8 @@
       <file leaf-file-name="SpanParselet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SpanParselet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="37" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="37" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -193,7 +189,6 @@
         <option value="$PROJECT_DIR$/src/main/java/parser/parselets/SymbolParselet.java" />
         <option value="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixBlankParselet.java" />
         <option value="$PROJECT_DIR$/src/main/java/parser/ParseletProvider.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/parser/parselets/PrefixSpanParselet.java" />
         <option value="$PROJECT_DIR$/src/main/java/parser/parselets/SpanParselet.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/package-info.java" />
@@ -201,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/Mathematica.flex" />
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/ParseletProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/package-info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementType.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/AssociationParselet.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/CompoundExpressionParselet.java" />
@@ -217,6 +211,8 @@
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/CriticalParserError.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementTypes.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/test.m" />
       </list>
     </option>
@@ -263,7 +259,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
+    <option name="x" value="-1" />
+    <option name="width" value="1922" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -291,129 +288,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mathematica" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mathematica" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematica-Parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mathematica" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lexer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+      <pane id="PackagesPane">
+        <subPane />
       </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
@@ -461,10 +337,31 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
       <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mathematica-Parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -868,34 +765,34 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1055" extended-state="0" />
-    <editor active="false" />
+    <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40752688" sideWeight="0.4692388" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31935483" sideWeight="0.57977057" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.215625" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.47497392" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31827956" sideWeight="0.4202294" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16319083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16302083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39784947" sideWeight="0.48958334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39784947" sideWeight="0.48958334" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40752688" sideWeight="0.4692388" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31827956" sideWeight="0.4202294" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21827957" sideWeight="0.47497392" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -924,11 +821,12 @@
     <MESSAGE value="changed README.md" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="renamed AST to ASTNode" />
-    <option name="LAST_COMMIT_MESSAGE" value="renamed AST to ASTNode" />
+    <MESSAGE value="implemented Span(;;) operator" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented Span(;;) operator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -937,176 +835,94 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/PrefixOperatorParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/PrefixGetParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/StringParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/SlotParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/AssociationParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/GroupParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/NumberParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/SlotExpressionParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/ListParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/lexer/MathematicaLexer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/TagSetParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/CompoundExpressionParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/MathematicaElementTypes.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/lexer/Mathematica.flex" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/lexer/_MathematicaLexer.java" />
-    <entry file="file://$PROJECT_DIR$/testcases.m">
+    <entry file="file://$PROJECT_DIR$/test.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="47" column="9" selection-start-line="5" selection-start-column="0" selection-end-line="47" selection-end-column="9" />
+        <state relative-caret-position="180">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/MathematicaElementType.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/PrefixBlankSequenceParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/PrefixBlankNullSequenceParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/MathematicaParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/SymbolParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/PrefixBlankParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/ParseletProvider.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/PrefixDefaultParselet.java" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="414">
-            <caret line="58" column="48" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="48" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/SpanParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/ParserUtil.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parser/parselets/PrefixSpanParselet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/MathematicaLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/Mathematica.flex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/math.skeleton">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state relative-caret-position="108">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/AssociationParselet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/CriticalParserError.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        <state relative-caret-position="162">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementTypes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="198">
+          <caret line="32" column="95" selection-start-line="32" selection-start-column="95" selection-end-line="32" selection-end-column="95" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/package-info.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="14130">
+          <caret line="785" column="38" selection-start-line="785" selection-start-column="38" selection-end-line="785" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/ParseletProvider.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="39" column="53" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/DerivativeParselet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        <state relative-caret-position="1170">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="414">
+          <caret line="54" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SpanParselet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="37" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state relative-caret-position="144">
+          <caret line="37" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/lexer/_MathematicaLexer.java">
+    <entry file="file://$PROJECT_DIR$/test.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="0">
+          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PostfixOperatorParselet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/GroupParselet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/FunctionCallParselet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/CompoundExpressionParselet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,24 +944,107 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16470">
-          <caret line="915" column="38" selection-start-line="915" selection-start-column="38" selection-end-line="915" selection-end-column="38" />
+        <state relative-caret-position="17010">
+          <caret line="945" column="38" selection-start-line="945" selection-start-column="38" selection-end-line="945" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="54" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SpanParselet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="37" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/CriticalParserError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaElementTypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="32" column="95" selection-start-line="32" selection-start-column="95" selection-end-line="32" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14130">
+          <caret line="785" column="38" selection-start-line="785" selection-start-column="38" selection-end-line="785" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/MathematicaParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/PrefixSpanParselet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="54" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/cbarbat/mathematica/parser/parselets/SpanParselet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="37" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="180">
+            <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+        <state relative-caret-position="144">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>

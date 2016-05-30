@@ -279,7 +279,9 @@ public class MathematicaParser {
                         type == STRING_LITERAL_EXPRESSION ||
                         type == SLOT ||
                         type == SLOT_SEQUENCE ||
-                        type == ASSOCIATION_SLOT)
+                        type == ASSOCIATION_SLOT ||
+                        type == ALL
+                )
                         && (children.isEmpty())) {
                     sb.append(this.token.text);
                 } else {

@@ -146,6 +146,7 @@ public interface MathematicaElementTypes {
     MathematicaElementType DOUBLE_COLON = new MathematicaElementType("DOUBLE_COLON");
     MathematicaElementType SEMICOLON = new MathematicaElementType("SEMICOLON");
     MathematicaElementType SPAN = new MathematicaElementType("SPAN");
+    MathematicaElementType ALL = new MathematicaElementType("ALL");
     MathematicaElementType OUT = new MathematicaElementType("OUT");
     MathematicaElementType STRING_JOIN = new MathematicaElementType("STRING_JOIN");
     MathematicaElementType STRING_EXPRESSION = new MathematicaElementType("STRING_EXPRESSION");
@@ -253,7 +254,7 @@ public interface MathematicaElementTypes {
     MathematicaElementType TIMES_EXPRESSION = new MathematicaElementType("TIMES_EXPRESSION");
     MathematicaElementType PLUS_EXPRESSION = new MathematicaElementType("PLUS_EXPRESSION");
     MathematicaElementType MINUS_EXPRESSION = new MathematicaElementType("MINUS_EXPRESSION");
-    // --Commented out by Inspection (14.05.16 10:15):MathematicaElementType SPAN_EXPRESSION = new MathematicaElementType("SPAN_EXPRESSION");
+    MathematicaElementType SPAN_EXPRESSION = new MathematicaElementType("SPAN_EXPRESSION");
     MathematicaElementType EQUAL_EXPRESSION = new MathematicaElementType("EQUAL_EXPRESSION");
     MathematicaElementType UNEQUAL_EXPRESSION = new MathematicaElementType("UNEQUAL_EXPRESSION");
     MathematicaElementType GREATER_EXPRESSION = new MathematicaElementType("GREATER_EXPRESSION");
