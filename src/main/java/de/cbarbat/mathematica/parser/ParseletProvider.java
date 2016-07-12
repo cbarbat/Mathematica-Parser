@@ -60,6 +60,8 @@ public class ParseletProvider {
         register(MathematicaElementTypes.SLOT, MathematicaElementTypes.SLOT, new SlotParselet()); // ##n expressions
         register(MathematicaElementTypes.ASSOCIATION_SLOT, MathematicaElementTypes.ASSOCIATION_SLOT, new SlotExpressionParselet()); // #foo123 expressions
 
+        register(MathematicaElementTypes.OUT, MathematicaElementTypes.OUT, new OutParselet()); // %, %%, %3 expressions
+
         register(MathematicaElementTypes.BLANK, MathematicaElementTypes.BLANK_EXPRESSION, new PrefixBlankParselet(76)); // Blank(_)
         register(MathematicaElementTypes.BLANK_SEQUENCE, MathematicaElementTypes.BLANK_SEQUENCE_EXPRESSION, new PrefixBlankSequenceParselet(76)); // BlankSequence(__)
         register(MathematicaElementTypes.BLANK_NULL_SEQUENCE, MathematicaElementTypes.BLANK_NULL_SEQUENCE_EXPRESSION, new PrefixBlankNullSequenceParselet(76)); // BlankNullSequence(___)
@@ -89,6 +91,7 @@ public class ParseletProvider {
         infixRight(MathematicaElementTypes.APPLY, MathematicaElementTypes.APPLY_EXPRESSION, 60); // Apply(@@)
         infixRight(MathematicaElementTypes.APPLY1, MathematicaElementTypes.APPLY1_EXPRESSION, 60); // Apply1(@@@)
 
+        postfix(MathematicaElementTypes.DOUBLE_EXCLAMATION_MARK, MathematicaElementTypes.FACTORIAL2_POSTFIX, 58);
         postfix(MathematicaElementTypes.EXCLAMATION_MARK, MathematicaElementTypes.FACTORIAL_POSTFIX, 58);
 
         register(MathematicaElementTypes.DERIVATIVE, MathematicaElementTypes.DERIVATIVE_EXPRESSION, new DerivativeParselet(56)); // Derivative(')

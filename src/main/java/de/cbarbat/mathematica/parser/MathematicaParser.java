@@ -28,6 +28,7 @@ import de.cbarbat.mathematica.parser.parselets.PrefixParselet;
 import de.cbarbat.mathematica.lexer.MathematicaLexer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static de.cbarbat.mathematica.parser.MathematicaElementTypes.*;
 import static de.cbarbat.mathematica.parser.ParseletProvider.getInfixParselet;
@@ -86,7 +87,8 @@ public class MathematicaParser {
     /**
      * This is the main entry point for the parsing a file. Every tme
      */
-    public void parse() {
+    public List<ASTNode> parse() {
+        List<ASTNode> list = new ArrayList<>();
         myLexer.setImportantLineBreakHandler(myImportantLinebreakHandler);
         try {
             while (!myLexer.eof()) {
@@ -95,7 +97,8 @@ public class MathematicaParser {
                     error("The last expression could not be parsed correctly.");
                     myLexer.advanceLexer();
                 } else {
-                    System.out.println("Result: " + expr.toString());
+                    list.add(expr);
+                    //System.out.println("Result: " + expr.toString());
                 }
             }
         } catch (CriticalParserError criticalParserError) {
@@ -104,6 +107,7 @@ public class MathematicaParser {
             }
             error(criticalParserError.getMessage());
         }
+        return list;
     }
 
     public ASTNode parseExpression() throws CriticalParserError {
@@ -277,6 +281,7 @@ public class MathematicaParser {
                         type == SYMBOL_EXPRESSION ||
                         type == STRINGIFIED_SYMBOL_EXPRESSION ||
                         type == STRING_LITERAL_EXPRESSION ||
+                        type == OUT ||
                         type == SLOT ||
                         type == SLOT_SEQUENCE ||
                         type == ASSOCIATION_SLOT ||

@@ -76,8 +76,7 @@ Slot = "#" [0-9]*
 AssociationSlot = "#" {Identifier} | "#\"" {Identifier} "\"" | "#\\[" {Identifier} "\\]"
 SlotSequence = "##" [0-9]*
 
-Out = "%"+
-
+Out = "%" (("%"*) | ([0-9]*))
 
 %xstate IN_COMMENT
 %xstate IN_STRING
@@ -120,8 +119,6 @@ Out = "%"+
 
 	"@*"				{ return MathematicaElementTypes.COMPOSITION; }
 	"/*"				{ return MathematicaElementTypes.RIGHT_COMPOSITION; }
-
-	{Out}				{ return MathematicaElementTypes.OUT; }
 
 	"^:="				{ return MathematicaElementTypes.UP_SET_DELAYED; }
 	"^="				{ return MathematicaElementTypes.UP_SET; }
@@ -195,15 +192,16 @@ Out = "%"+
     {Slot}				{ return MathematicaElementTypes.SLOT; }
     {AssociationSlot}   { return MathematicaElementTypes.ASSOCIATION_SLOT; }
 
+	{Out}				{ return MathematicaElementTypes.OUT; }
+
     "?"					{ return MathematicaElementTypes.QUESTION_MARK; }
+    "!!"				{ return MathematicaElementTypes.DOUBLE_EXCLAMATION_MARK; }
     "!"					{ return MathematicaElementTypes.EXCLAMATION_MARK; }
 
     "||"				{ return MathematicaElementTypes.OR; }
     "|"					{ return MathematicaElementTypes.ALTERNATIVE; }
     "&&"				{ return MathematicaElementTypes.AND; }
     "&"					{ return MathematicaElementTypes.FUNCTION; }
-
-    "'"					{ return MathematicaElementTypes.DERIVATIVE; }
 
     "'"					{ return MathematicaElementTypes.DERIVATIVE; }
 
@@ -244,7 +242,7 @@ Out = "%"+
 
 <IN_COMMENT> {
 	{CommentStart}               { yypushstate(IN_COMMENT); return MathematicaElementTypes.COMMENT_START;}
-	[^\(\*\):]*                  { return MathematicaElementTypes.COMMENT_CONTENT; }
+	[^\(\*\):]+                  { return MathematicaElementTypes.COMMENT_CONTENT; }
 	"::"[A-Z][A-Za-z]*"::"       {return MathematicaElementTypes.COMMENT_SECTION; }
 	":"[A-Z][A-Za-z ]*":"        {return MathematicaElementTypes.COMMENT_ANNOTATION; }
 	{CommentEnd}                 { yypopstate(); return MathematicaElementTypes.COMMENT_END; }

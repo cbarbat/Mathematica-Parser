@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Calin Barbat
+ * Copyright (c) 2013 Patrick Scheibe & 2016 Calin Barbat
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,43 +20,31 @@
  * THE SOFTWARE.
  */
 
-package de.cbarbat.mathematica;
+package de.cbarbat.mathematica.parser.parselets;
 
-import java.io.FileReader;
-import java.util.List;
-
-import de.cbarbat.mathematica.lexer.*;
+import de.cbarbat.mathematica.lexer.MathematicaLexer;
+import de.cbarbat.mathematica.parser.MathematicaElementType;
+import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
-class Main {
-    public static void main(String[] args) {
-        String str;
-        MathematicaLexer ml;
-        MathematicaParser mp;
-        for (String arg : args) {
-            System.out.println();
-            System.out.println("Processing file: " + arg);
-            try {
-                FileReader fr = new FileReader(arg);
-                str = "";
+import static de.cbarbat.mathematica.parser.MathematicaElementTypes.OUT;
 
-                // Read characters
-                int j;
-                while ((j = fr.read()) != -1) {
-                    str += (char) j;
-                }
-                fr.close();
+public class OutParselet implements PrefixParselet {
 
-                ml = new MathematicaLexer(str);
-                mp = new MathematicaParser(ml);
-                List<MathematicaParser.ASTNode> list = mp.parse();
-                for (MathematicaParser.ASTNode item: list) {
-                    System.out.println("Result: " + item.toString());
-                }
-
-            } catch (Exception ex) {
-                System.out.println("Exception: " + ex.toString());
-            }
-        }
+    public OutParselet() {
     }
+
+    @Override
+    public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
+        final MathematicaLexer.Token token = parser.getToken();
+        final MathematicaElementType tokenType = token.type;
+        if (tokenType == OUT) {
+            parser.advanceLexer();
+            return MathematicaParser.result(token, tokenType, true);
+        } else {
+            return MathematicaParser.notParsed();
+        }
+
+    }
+
 }

@@ -156,6 +156,7 @@ public interface MathematicaElementTypes {
     MathematicaElementType OR = new MathematicaElementType("OR");
     MathematicaElementType ALTERNATIVE = new MathematicaElementType("ALTERNATIVE");
     MathematicaElementType DERIVATIVE = new MathematicaElementType("DERIVATIVE");
+    MathematicaElementType DOUBLE_EXCLAMATION_MARK = new MathematicaElementType("DOUBLE_EXCLAMATION_MARK");
     MathematicaElementType EXCLAMATION_MARK = new MathematicaElementType("EXCLAMATION_MARK");
     MathematicaElementType QUESTION_MARK = new MathematicaElementType("QUESTION_MARK");
     MathematicaElementType SLOT = new MathematicaElementType("SLOT");
@@ -242,6 +243,7 @@ public interface MathematicaElementTypes {
     MathematicaElementType MAP_ALL_EXPRESSION = new MathematicaElementType("MAP_ALL_EXPRESSION");
     MathematicaElementType APPLY_EXPRESSION = new MathematicaElementType("APPLY_EXPRESSION");
     MathematicaElementType APPLY1_EXPRESSION = new MathematicaElementType("APPLY1_EXPRESSION");
+    MathematicaElementType FACTORIAL2_POSTFIX = new MathematicaElementType("FACTORIAL2_POSTFIX");
     MathematicaElementType FACTORIAL_POSTFIX = new MathematicaElementType("FACTORIAL_POSTFIX");
     MathematicaElementType DERIVATIVE_EXPRESSION = new MathematicaElementType("DERIVATIVE_EXPRESSION");
     MathematicaElementType STRING_JOIN_EXPRESSION = new MathematicaElementType("STRING_JOIN_EXPRESSION");
