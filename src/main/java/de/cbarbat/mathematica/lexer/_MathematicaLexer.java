@@ -205,15 +205,15 @@ class _MathematicaLexer {
     "\1\47\1\1\1\50\1\51\1\52\1\53\1\54\1\55"+
     "\1\56\1\57\2\0\2\3\1\0\1\60\1\0\2\13"+
     "\1\0\1\61\1\0\1\62\1\63\1\64\1\65\1\66"+
-    "\1\0\1\17\1\67\1\0\2\21\1\0\1\70\1\71"+
+    "\1\0\1\17\1\67\1\0\1\70\1\21\1\0\1\71"+
     "\1\72\1\73\1\74\1\75\1\76\1\77\1\100\1\101"+
     "\1\102\1\103\1\104\1\105\1\106\1\107\1\110\1\111"+
-    "\1\112\1\113\1\114\1\115\1\0\1\116\1\117\1\120"+
-    "\1\121\1\122\1\123\1\124\1\125\1\126\1\127\2\0"+
-    "\2\45\2\0\1\7\2\0\1\13\2\0\1\130\1\131"+
-    "\2\0\1\132\1\133\1\134\1\135\1\136\1\137\1\140"+
-    "\1\141\1\142\1\0\1\143\1\0\1\144\1\13\1\0"+
-    "\2\13\1\0\1\66\1\0\1\13\1\0\1\145";
+    "\1\112\1\113\1\114\1\115\1\116\1\0\1\117\1\120"+
+    "\1\121\1\122\1\123\1\124\1\125\1\126\1\127\1\130"+
+    "\2\0\2\45\2\0\1\7\2\0\1\13\2\0\1\131"+
+    "\1\132\2\0\1\133\1\134\1\135\1\136\1\137\1\140"+
+    "\1\141\1\142\1\143\1\0\1\144\1\0\1\145\1\13"+
+    "\1\0\2\13\1\0\1\66\1\0\1\13\1\0\1\146";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[160];
@@ -794,407 +794,411 @@ class _MathematicaLexer {
           case 1: 
             { return MathematicaElementTypes.BAD_CHARACTER;
             }
-          case 102: break;
+          case 103: break;
           case 2: 
             { return MathematicaElementTypes.LINE_BREAK;
             }
-          case 103: break;
+          case 104: break;
           case 3: 
             { return MathematicaElementTypes.WHITE_SPACE;
             }
-          case 104: break;
+          case 105: break;
           case 4: 
             { return MathematicaElementTypes.LEFT_PAR;
             }
-          case 105: break;
+          case 106: break;
           case 5: 
             { return MathematicaElementTypes.TIMES;
             }
-          case 106: break;
+          case 107: break;
           case 6: 
             { return MathematicaElementTypes.RIGHT_PAR;
             }
-          case 107: break;
+          case 108: break;
           case 7: 
             { return MathematicaElementTypes.IDENTIFIER;
             }
-          case 108: break;
+          case 109: break;
           case 8: 
             { return MathematicaElementTypes.LEFT_BRACKET;
             }
-          case 109: break;
+          case 110: break;
           case 9: 
             { return MathematicaElementTypes.RIGHT_BRACKET;
             }
-          case 110: break;
+          case 111: break;
           case 10: 
             { return MathematicaElementTypes.BACK_TICK;
             }
-          case 111: break;
+          case 112: break;
           case 11: 
             { return MathematicaElementTypes.NUMBER;
             }
-          case 112: break;
+          case 113: break;
           case 12: 
             { return MathematicaElementTypes.POINT;
             }
-          case 113: break;
+          case 114: break;
           case 13: 
             { return MathematicaElementTypes.POWER;
             }
-          case 114: break;
+          case 115: break;
           case 14: 
             { return MathematicaElementTypes.MINUS;
             }
-          case 115: break;
+          case 116: break;
           case 15: 
             { return MathematicaElementTypes.SLOT;
             }
-          case 116: break;
+          case 117: break;
           case 16: 
             { yypushstate(IN_STRING); return MathematicaElementTypes.STRING_LITERAL_BEGIN;
             }
-          case 117: break;
+          case 118: break;
           case 17: 
             { return MathematicaElementTypes.OUT;
             }
-          case 118: break;
+          case 119: break;
           case 18: 
             { return MathematicaElementTypes.LEFT_BRACE;
             }
-          case 119: break;
+          case 120: break;
           case 19: 
             { return MathematicaElementTypes.RIGHT_BRACE;
             }
-          case 120: break;
+          case 121: break;
           case 20: 
             { return MathematicaElementTypes.LESS;
             }
-          case 121: break;
+          case 122: break;
           case 21: 
             { return MathematicaElementTypes.ALTERNATIVE;
             }
-          case 122: break;
+          case 123: break;
           case 22: 
             { return MathematicaElementTypes.GREATER;
             }
-          case 123: break;
+          case 124: break;
           case 23: 
             { return MathematicaElementTypes.PREFIX_CALL;
             }
-          case 124: break;
+          case 125: break;
           case 24: 
             { return MathematicaElementTypes.DIVIDE;
             }
-          case 125: break;
+          case 126: break;
           case 25: 
             { return MathematicaElementTypes.COLON;
             }
-          case 126: break;
+          case 127: break;
           case 26: 
             { return MathematicaElementTypes.SET;
             }
-          case 127: break;
+          case 128: break;
           case 27: 
             { return MathematicaElementTypes.SEMICOLON;
             }
-          case 128: break;
+          case 129: break;
           case 28: 
             { return MathematicaElementTypes.EXCLAMATION_MARK;
             }
-          case 129: break;
+          case 130: break;
           case 29: 
             { return MathematicaElementTypes.PLUS;
             }
-          case 130: break;
+          case 131: break;
           case 30: 
             { return MathematicaElementTypes.INFIX_CALL;
             }
-          case 131: break;
+          case 132: break;
           case 31: 
             { return MathematicaElementTypes.COMMA;
             }
-          case 132: break;
+          case 133: break;
           case 32: 
             { return MathematicaElementTypes.BLANK;
             }
-          case 133: break;
+          case 134: break;
           case 33: 
             { return MathematicaElementTypes.QUESTION_MARK;
             }
-          case 134: break;
+          case 135: break;
           case 34: 
             { return MathematicaElementTypes.FUNCTION;
             }
-          case 135: break;
+          case 136: break;
           case 35: 
             { return MathematicaElementTypes.DERIVATIVE;
             }
-          case 136: break;
+          case 137: break;
           case 36: 
             { return MathematicaElementTypes.COMMENT_CONTENT;
             }
-          case 137: break;
+          case 138: break;
           case 37: 
             { return MathematicaElementTypes.STRING_LITERAL;
             }
-          case 138: break;
+          case 139: break;
           case 38: 
             { yypopstate(); return MathematicaElementTypes.STRING_LITERAL_END;
             }
-          case 139: break;
+          case 140: break;
           case 39: 
             { yypushback(1); yybegin(PUT_RHS);
             }
-          case 140: break;
+          case 141: break;
           case 40: 
             { yybegin(PUT_RHS); return MathematicaElementTypes.WHITE_SPACE;
             }
-          case 141: break;
+          case 142: break;
           case 41: 
             { yybegin(YYINITIAL); return MathematicaElementTypes.STRINGIFIED_IDENTIFIER;
             }
-          case 142: break;
+          case 143: break;
           case 42: 
             { yybegin(YYINITIAL); yypushstate(IN_STRING); return MathematicaElementTypes.STRING_LITERAL_BEGIN;
             }
-          case 143: break;
+          case 144: break;
           case 43: 
             { yypushback(1); yybegin(GET_RHS);
             }
-          case 144: break;
+          case 145: break;
           case 44: 
             { yybegin(GET_RHS); return MathematicaElementTypes.WHITE_SPACE;
             }
-          case 145: break;
+          case 146: break;
           case 45: 
             { yypushstate(IN_COMMENT); return MathematicaElementTypes.COMMENT_START;
             }
-          case 146: break;
+          case 147: break;
           case 46: 
             { return MathematicaElementTypes.NON_COMMUTATIVE_MULTIPLY;
             }
-          case 147: break;
+          case 148: break;
           case 47: 
             { return MathematicaElementTypes.TIMES_BY;
             }
-          case 148: break;
+          case 149: break;
           case 48: 
             { return MathematicaElementTypes.ACCURACY;
             }
-          case 149: break;
+          case 150: break;
           case 49: 
             { return MathematicaElementTypes.REPEATED;
             }
-          case 150: break;
+          case 151: break;
           case 50: 
             { return MathematicaElementTypes.UP_SET;
             }
-          case 151: break;
+          case 152: break;
           case 51: 
             { return MathematicaElementTypes.DECREMENT;
             }
-          case 152: break;
+          case 153: break;
           case 52: 
             { return MathematicaElementTypes.RULE;
             }
-          case 153: break;
+          case 154: break;
           case 53: 
             { return MathematicaElementTypes.SUBTRACT_FROM;
             }
-          case 154: break;
+          case 155: break;
           case 54: 
             { return MathematicaElementTypes.ASSOCIATION_SLOT;
             }
-          case 155: break;
+          case 156: break;
           case 55: 
             { return MathematicaElementTypes.SLOT_SEQUENCE;
             }
-          case 156: break;
-          case 56: 
-            { yybegin(GET_START); return MathematicaElementTypes.GET;
-            }
           case 157: break;
-          case 57: 
-            { return MathematicaElementTypes.LEFT_ASSOCIATION;
+          case 56: 
+            { return MathematicaElementTypes.OUT1;
             }
           case 158: break;
-          case 58: 
-            { return MathematicaElementTypes.STRING_JOIN;
+          case 57: 
+            { yybegin(GET_START); return MathematicaElementTypes.GET;
             }
           case 159: break;
-          case 59: 
-            { return MathematicaElementTypes.LESS_EQUAL;
+          case 58: 
+            { return MathematicaElementTypes.LEFT_ASSOCIATION;
             }
           case 160: break;
-          case 60: 
-            { return MathematicaElementTypes.OR;
+          case 59: 
+            { return MathematicaElementTypes.STRING_JOIN;
             }
           case 161: break;
-          case 61: 
-            { return MathematicaElementTypes.RIGHT_ASSOCIATION;
+          case 60: 
+            { return MathematicaElementTypes.LESS_EQUAL;
             }
           case 162: break;
-          case 62: 
-            { yybegin(PUT_START); return MathematicaElementTypes.PUT;
+          case 61: 
+            { return MathematicaElementTypes.OR;
             }
           case 163: break;
-          case 63: 
-            { return MathematicaElementTypes.GREATER_EQUAL;
+          case 62: 
+            { return MathematicaElementTypes.RIGHT_ASSOCIATION;
             }
           case 164: break;
-          case 64: 
-            { return MathematicaElementTypes.COMPOSITION;
+          case 63: 
+            { yybegin(PUT_START); return MathematicaElementTypes.PUT;
             }
           case 165: break;
-          case 65: 
-            { return MathematicaElementTypes.APPLY;
+          case 64: 
+            { return MathematicaElementTypes.GREATER_EQUAL;
             }
           case 166: break;
-          case 66: 
-            { return MathematicaElementTypes.RIGHT_COMPOSITION;
+          case 65: 
+            { return MathematicaElementTypes.COMPOSITION;
             }
           case 167: break;
-          case 67: 
-            { return MathematicaElementTypes.REPLACE_ALL;
+          case 66: 
+            { return MathematicaElementTypes.APPLY;
             }
           case 168: break;
-          case 68: 
-            { return MathematicaElementTypes.MAP;
+          case 67: 
+            { return MathematicaElementTypes.RIGHT_COMPOSITION;
             }
           case 169: break;
-          case 69: 
-            { return MathematicaElementTypes.POSTFIX;
+          case 68: 
+            { return MathematicaElementTypes.REPLACE_ALL;
             }
           case 170: break;
-          case 70: 
-            { return MathematicaElementTypes.TAG_SET;
+          case 69: 
+            { return MathematicaElementTypes.MAP;
             }
           case 171: break;
-          case 71: 
-            { return MathematicaElementTypes.DIVIDE_BY;
+          case 70: 
+            { return MathematicaElementTypes.POSTFIX;
             }
           case 172: break;
-          case 72: 
-            { return MathematicaElementTypes.CONDITION;
+          case 71: 
+            { return MathematicaElementTypes.TAG_SET;
             }
           case 173: break;
-          case 73: 
-            { return MathematicaElementTypes.RULE_DELAYED;
+          case 72: 
+            { return MathematicaElementTypes.DIVIDE_BY;
             }
           case 174: break;
-          case 74: 
-            { return MathematicaElementTypes.DOUBLE_COLON;
+          case 73: 
+            { return MathematicaElementTypes.CONDITION;
             }
           case 175: break;
-          case 75: 
-            { return MathematicaElementTypes.SET_DELAYED;
+          case 74: 
+            { return MathematicaElementTypes.RULE_DELAYED;
             }
           case 176: break;
-          case 76: 
-            { return MathematicaElementTypes.UNSET;
+          case 75: 
+            { return MathematicaElementTypes.DOUBLE_COLON;
             }
           case 177: break;
-          case 77: 
-            { return MathematicaElementTypes.EQUAL;
+          case 76: 
+            { return MathematicaElementTypes.SET_DELAYED;
             }
           case 178: break;
-          case 78: 
-            { return MathematicaElementTypes.SPAN;
+          case 77: 
+            { return MathematicaElementTypes.UNSET;
             }
           case 179: break;
-          case 79: 
-            { return MathematicaElementTypes.UNEQUAL;
+          case 78: 
+            { return MathematicaElementTypes.EQUAL;
             }
           case 180: break;
-          case 80: 
-            { return MathematicaElementTypes.DOUBLE_EXCLAMATION_MARK;
+          case 79: 
+            { return MathematicaElementTypes.SPAN;
             }
           case 181: break;
-          case 81: 
-            { return MathematicaElementTypes.ADD_TO;
+          case 80: 
+            { return MathematicaElementTypes.UNEQUAL;
             }
           case 182: break;
-          case 82: 
-            { return MathematicaElementTypes.INCREMENT;
+          case 81: 
+            { return MathematicaElementTypes.DOUBLE_EXCLAMATION_MARK;
             }
           case 183: break;
-          case 83: 
-            { return MathematicaElementTypes.STRING_EXPRESSION;
+          case 82: 
+            { return MathematicaElementTypes.ADD_TO;
             }
           case 184: break;
-          case 84: 
-            { return MathematicaElementTypes.DEFAULT;
+          case 83: 
+            { return MathematicaElementTypes.INCREMENT;
             }
           case 185: break;
-          case 85: 
-            { return MathematicaElementTypes.BLANK_SEQUENCE;
+          case 84: 
+            { return MathematicaElementTypes.STRING_EXPRESSION;
             }
           case 186: break;
-          case 86: 
-            { return MathematicaElementTypes.AND;
+          case 85: 
+            { return MathematicaElementTypes.DEFAULT;
             }
           case 187: break;
-          case 87: 
-            { yypopstate(); return MathematicaElementTypes.COMMENT_END;
+          case 86: 
+            { return MathematicaElementTypes.BLANK_SEQUENCE;
             }
           case 188: break;
-          case 88: 
-            { return MathematicaElementTypes.REPEATED_NULL;
+          case 87: 
+            { return MathematicaElementTypes.AND;
             }
           case 189: break;
-          case 89: 
-            { return MathematicaElementTypes.UP_SET_DELAYED;
+          case 88: 
+            { yypopstate(); return MathematicaElementTypes.COMMENT_END;
             }
           case 190: break;
-          case 90: 
-            { return MathematicaElementTypes.UNDIRECTED_EDGE;
+          case 89: 
+            { return MathematicaElementTypes.REPEATED_NULL;
             }
           case 191: break;
-          case 91: 
-            { yybegin(PUT_START); return MathematicaElementTypes.PUT_APPEND;
+          case 90: 
+            { return MathematicaElementTypes.UP_SET_DELAYED;
             }
           case 192: break;
-          case 92: 
-            { return MathematicaElementTypes.APPLY1;
+          case 91: 
+            { return MathematicaElementTypes.UNDIRECTED_EDGE;
             }
           case 193: break;
-          case 93: 
-            { return MathematicaElementTypes.REPLACE_REPEATED;
+          case 92: 
+            { yybegin(PUT_START); return MathematicaElementTypes.PUT_APPEND;
             }
           case 194: break;
-          case 94: 
-            { return MathematicaElementTypes.MAP_ALL;
+          case 93: 
+            { return MathematicaElementTypes.APPLY1;
             }
           case 195: break;
-          case 95: 
-            { yypushback(2); return MathematicaElementTypes.SET;
+          case 94: 
+            { return MathematicaElementTypes.REPLACE_REPEATED;
             }
           case 196: break;
-          case 96: 
-            { return MathematicaElementTypes.SAME_Q;
+          case 95: 
+            { return MathematicaElementTypes.MAP_ALL;
             }
           case 197: break;
-          case 97: 
-            { return MathematicaElementTypes.UNSAME_Q;
+          case 96: 
+            { yypushback(2); return MathematicaElementTypes.SET;
             }
           case 198: break;
-          case 98: 
-            { return MathematicaElementTypes.BLANK_NULL_SEQUENCE;
+          case 97: 
+            { return MathematicaElementTypes.SAME_Q;
             }
           case 199: break;
-          case 99: 
-            { return MathematicaElementTypes.COMMENT_ANNOTATION;
+          case 98: 
+            { return MathematicaElementTypes.UNSAME_Q;
             }
           case 200: break;
-          case 100: 
-            { return MathematicaElementTypes.STRING_NAMED_CHARACTER;
+          case 99: 
+            { return MathematicaElementTypes.BLANK_NULL_SEQUENCE;
             }
           case 201: break;
-          case 101: 
-            { return MathematicaElementTypes.COMMENT_SECTION;
+          case 100: 
+            { return MathematicaElementTypes.COMMENT_ANNOTATION;
             }
           case 202: break;
+          case 101: 
+            { return MathematicaElementTypes.STRING_NAMED_CHARACTER;
+            }
+          case 203: break;
+          case 102: 
+            { return MathematicaElementTypes.COMMENT_SECTION;
+            }
+          case 204: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

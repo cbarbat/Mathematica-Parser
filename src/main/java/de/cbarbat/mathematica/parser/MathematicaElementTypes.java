@@ -148,6 +148,7 @@ public interface MathematicaElementTypes {
     MathematicaElementType SPAN = new MathematicaElementType("SPAN");
     MathematicaElementType ALL = new MathematicaElementType("ALL");
     MathematicaElementType OUT = new MathematicaElementType("OUT");
+    MathematicaElementType OUT1 = new MathematicaElementType("OUT1");
     MathematicaElementType STRING_JOIN = new MathematicaElementType("STRING_JOIN");
     MathematicaElementType STRING_EXPRESSION = new MathematicaElementType("STRING_EXPRESSION");
     MathematicaElementType STRING_LITERAL_EXPRESSION = new MathematicaElementType("STRING_LITERAL_EXPRESSION");
@@ -218,6 +219,7 @@ public interface MathematicaElementTypes {
 
 
     // THIS SECTION IS AUTOMATICALLY CREATED WITH MATHEMATICA
+    MathematicaElementType OUT_EXPRESSION = new MathematicaElementType("OUT_EXPRESSION");
     MathematicaElementType LIST_EXPRESSION = new MathematicaElementType("LIST_EXPRESSION");
     MathematicaElementType ASSOCIATION_EXPRESSION = new MathematicaElementType("ASSOCIATION_EXPRESSION");
     MathematicaElementType SLOT_EXPRESSION = new MathematicaElementType("SLOT_EXPRESSION");

@@ -23,30 +23,29 @@
 package de.cbarbat.mathematica.parser.parselets;
 
 import de.cbarbat.mathematica.lexer.MathematicaLexer;
-import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
+import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
 import static de.cbarbat.mathematica.parser.MathematicaElementTypes.*;
 
-public class OutParselet implements PrefixParselet {
+public class Out1Parselet implements PrefixParselet {
 
-    public OutParselet() {
+    public Out1Parselet() {
     }
 
     @Override
     public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         final MathematicaLexer.Token token = parser.getToken();
         final MathematicaElementType tokenType = token.type;
-        if (tokenType == OUT) {
+        if (tokenType == OUT1) {
             parser.advanceLexer();
             MathematicaParser.ASTNode tree = MathematicaParser.result(token, OUT_EXPRESSION, true);
-            Integer len = -token.text.length();
-            if (len < -1) {
-                MathematicaLexer.Token token1 = new MathematicaLexer.Token(NUMBER, len.toString(), token.start, token.end);
-                MathematicaParser.ASTNode number = MathematicaParser.result(token1, NUMBER_EXPRESSION, true);
-                tree.children.add(number);
-            }
+            String str = token.text.substring(1, token.text.length());
+            Integer len = Integer.parseInt(str);
+            MathematicaLexer.Token token1 = new MathematicaLexer.Token(NUMBER, len.toString(), token.start+1, token.end);
+            MathematicaParser.ASTNode number = MathematicaParser.result(token1, NUMBER_EXPRESSION, true);
+            tree.children.add(number);
             return tree;
         } else {
             return MathematicaParser.notParsed();

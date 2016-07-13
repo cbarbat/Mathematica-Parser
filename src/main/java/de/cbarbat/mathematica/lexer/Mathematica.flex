@@ -76,7 +76,8 @@ Slot = "#" [0-9]*
 AssociationSlot = "#" {Identifier} | "#\"" {Identifier} "\"" | "#\\[" {Identifier} "\\]"
 SlotSequence = "##" [0-9]*
 
-Out = "%" (("%"*) | ([0-9]*))
+Out = "%" "%"*
+Out1 = "%" [0-9][0-9]*
 
 %xstate IN_COMMENT
 %xstate IN_STRING
@@ -193,6 +194,7 @@ Out = "%" (("%"*) | ([0-9]*))
     {AssociationSlot}   { return MathematicaElementTypes.ASSOCIATION_SLOT; }
 
 	{Out}				{ return MathematicaElementTypes.OUT; }
+	{Out1}				{ return MathematicaElementTypes.OUT1; }
 
     "?"					{ return MathematicaElementTypes.QUESTION_MARK; }
     "!!"				{ return MathematicaElementTypes.DOUBLE_EXCLAMATION_MARK; }
