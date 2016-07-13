@@ -27,7 +27,7 @@ import de.cbarbat.mathematica.parser.MathematicaElementType;
 import de.cbarbat.mathematica.parser.CriticalParserError;
 import de.cbarbat.mathematica.parser.MathematicaParser;
 
-import static de.cbarbat.mathematica.parser.MathematicaElementTypes.SLOTS;
+import static de.cbarbat.mathematica.parser.MathematicaElementTypes.*;
 
 /**
  * Parselet for symbols (identifier). Here, I currently parse not only simple identifiers like Sqrt, variable or
@@ -45,9 +45,31 @@ public class SlotParselet implements PrefixParselet {
     public MathematicaParser.ASTNode parse(MathematicaParser parser) throws CriticalParserError {
         final MathematicaLexer.Token token = parser.getToken();
         final MathematicaElementType tokenType = token.type;
-        if (SLOTS.contains(tokenType)) {
+        if (tokenType.equals(SLOT)) {
             parser.advanceLexer();
-            return MathematicaParser.result(token, tokenType, true);
+            MathematicaParser.ASTNode tree = MathematicaParser.result(token, SLOT_EXPRESSION, true);
+            Integer len = 1;
+            if (token.text.length() > 1) {
+                String str = token.text.substring(1, token.text.length());
+                len = Integer.parseInt(str);
+            }
+            MathematicaLexer.Token token1 = new MathematicaLexer.Token(NUMBER, len.toString(), token.start+1, token.end);
+            MathematicaParser.ASTNode number = MathematicaParser.result(token1, NUMBER_EXPRESSION, true);
+            tree.children.add(number);
+            return tree;
+        } else
+        if (tokenType.equals(SLOT_SEQUENCE)) {
+            parser.advanceLexer();
+            MathematicaParser.ASTNode tree = MathematicaParser.result(token, SLOT_SEQUENCE_EXPRESSION, true);
+            Integer len = 1;
+            if (token.text.length() > 2) {
+                String str = token.text.substring(2, token.text.length());
+                len = Integer.parseInt(str);
+            }
+            MathematicaLexer.Token token1 = new MathematicaLexer.Token(NUMBER, len.toString(), token.start+1, token.end);
+            MathematicaParser.ASTNode number = MathematicaParser.result(token1, NUMBER_EXPRESSION, true);
+            tree.children.add(number);
+            return tree;
         } else {
             return MathematicaParser.notParsed();
         }

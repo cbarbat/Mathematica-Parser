@@ -281,10 +281,6 @@ public class MathematicaParser {
                         type == SYMBOL_EXPRESSION ||
                         type == STRINGIFIED_SYMBOL_EXPRESSION ||
                         type == STRING_LITERAL_EXPRESSION ||
-                        type == OUT ||
-                        type == SLOT ||
-                        type == SLOT_SEQUENCE ||
-                        type == ASSOCIATION_SLOT ||
                         type == ALL
                 )
                         && (children.isEmpty())) {

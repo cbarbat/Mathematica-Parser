@@ -58,7 +58,7 @@ public class ParseletProvider {
 
         register(MathematicaElementTypes.SLOT_SEQUENCE, MathematicaElementTypes.SLOT_SEQUENCE, new SlotParselet()); // ##n expressions
         register(MathematicaElementTypes.SLOT, MathematicaElementTypes.SLOT, new SlotParselet()); // ##n expressions
-        register(MathematicaElementTypes.ASSOCIATION_SLOT, MathematicaElementTypes.ASSOCIATION_SLOT, new SlotExpressionParselet()); // #foo123 expressions
+        register(MathematicaElementTypes.ASSOCIATION_SLOT, MathematicaElementTypes.ASSOCIATION_SLOT, new SlotAssociationParselet()); // #foo123 expressions
 
         register(MathematicaElementTypes.OUT, MathematicaElementTypes.OUT_EXPRESSION, new OutParselet()); // %, %%, %%...% expressions
         register(MathematicaElementTypes.OUT1, MathematicaElementTypes.OUT_EXPRESSION, new Out1Parselet()); // %0, %1, %k expressions

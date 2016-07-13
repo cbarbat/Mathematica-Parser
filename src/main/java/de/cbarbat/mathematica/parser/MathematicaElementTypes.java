@@ -163,7 +163,7 @@ public interface MathematicaElementTypes {
     MathematicaElementType SLOT = new MathematicaElementType("SLOT");
     MathematicaElementType SLOT_SEQUENCE = new MathematicaElementType("SLOT_SEQUENCE");
     MathematicaElementType ASSOCIATION_SLOT = new MathematicaElementType("ASSOCIATION_SLOT");
-    List<MathematicaElementType> SLOTS = Arrays.asList(SLOT, SLOT_SEQUENCE);
+//    List<MathematicaElementType> SLOTS = Arrays.asList(SLOT, SLOT_SEQUENCE);
     MathematicaElementType FUNCTION = new MathematicaElementType("FUNCTION");
     MathematicaElementType BACK_TICK = new MathematicaElementType("BACK_TICK");
     MathematicaElementType INFIX_CALL = new MathematicaElementType("INFIX_CALL");
@@ -223,6 +223,7 @@ public interface MathematicaElementTypes {
     MathematicaElementType LIST_EXPRESSION = new MathematicaElementType("LIST_EXPRESSION");
     MathematicaElementType ASSOCIATION_EXPRESSION = new MathematicaElementType("ASSOCIATION_EXPRESSION");
     MathematicaElementType SLOT_EXPRESSION = new MathematicaElementType("SLOT_EXPRESSION");
+    MathematicaElementType SLOT_SEQUENCE_EXPRESSION = new MathematicaElementType("SLOT_SEQUENCE_EXPRESSION");
     MathematicaElementType NUMBER_EXPRESSION = new MathematicaElementType("NUMBER_EXPRESSION");
     MathematicaElementType SYMBOL_EXPRESSION = new MathematicaElementType("SYMBOL_EXPRESSION");
     MathematicaElementType STRINGIFIED_SYMBOL_EXPRESSION = new MathematicaElementType("STRINGIFIED_SYMBOL_EXPRESSION");
