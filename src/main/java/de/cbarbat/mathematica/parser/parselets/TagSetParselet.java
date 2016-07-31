@@ -43,6 +43,9 @@ public class TagSetParselet implements InfixParselet {
 
     @Override
     public MathematicaParser.ASTNode parse(MathematicaParser parser, MathematicaParser.ASTNode left) throws CriticalParserError {
+        if (left.type != MathematicaElementTypes.SYMBOL_EXPRESSION) {
+            throw new CriticalParserError("Expected symbol before token TAG_SET");
+        }
         MathematicaLexer.Token token1 = parser.getToken();
         if (parser.matchesToken(MathematicaElementTypes.TAG_SET)) {
             parser.advanceLexer();

@@ -56,7 +56,7 @@ public class SymbolParselet implements PrefixParselet {
                 )) {
                     parser.advanceLexer();
                     MathematicaParser.ASTNode left = MathematicaParser.result(token, finalExpressionType, true);
-                    MathematicaParser.ASTNode right = parser.parseExpression(76);
+                    MathematicaParser.ASTNode right = parser.parseExpression(78);
                     MathematicaParser.ASTNode tree = MathematicaParser.result(token, MathematicaElementTypes.PATTERN_EXPRESSION, right.isParsed());
                     tree.children.add(left);
                     if (!parser.optional) {
